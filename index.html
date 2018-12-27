@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+  <html itemscope itemtype=http://schema.org/WebPage lang=fr>
+  <meta charset=utf-8>
+  <meta name=viewport content="width=device-width, user-scalable=no">
+  <title>Olifish : Portfolio d'Olivier Colli</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108901544-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || []
+    function gtag(){dataLayer.push(arguments)}
+    gtag('js', new Date())
+    gtag('config', 'UA-108901544-1')
+
+    window.addEventListener('DOMContentLoaded', evt => {
+        window.onsubmit = event => {
+            event.preventDefault()
+            const query = document.querySelector('input').value
+            document.location.href = `http://www.olifish.com/galleries/#${slugify(query)}`
+        }
+    })
+
+    const slugify = text => {
+        const a = 'àáäâèéëêìíïîòóöôùúüûñçßÿœæŕśńṕẃǵǹḿǘẍźḧ·/_,:;'
+        const b = 'aaaaeeeeiiiioooouuuuncsyoarsnpwgnmuxzh------'
+        const p = new RegExp(a.split('').join('|'), 'g')
+
+        return text.toString().toLowerCase()
+        .replace(/\s+/g, '-') // Replace spaces with -
+        .replace(p, c =>
+            b.charAt(a.indexOf(c))) // Replace special chars
+        .replace(/&/g, '-and-') // Replace & with 'and'
+        .replace(/[^\w\-]+/g, '') // Remove all non-word chars
+        .replace(/\-\-+/g, '-') // Replace multiple - with single -
+        .replace(/^-+/, '') // Trim - from start of text
+        .replace(/-+$/, '') // Trim - from end of text
+    }
+  </script>
+<style>
+  body {
+      font-family: Arial, Helvetica, sans-serif;
+      padding: 0;
+      margin: 0;
+      background:  #f7f8fa;
+      width: 100%;
+  }
+  a:link,
+  a:visited {
+      text-decoration: none;
+      color: #9fa6b5;
+  }
+  header {
+      position: fixed;
+      width: 100%;
+      background: #2e4e72;
+      height: 3em;
+      display: flex;
+      justify-content: space-around;
+  }
+  header h1 {
+      line-height: .2em;
+      color: #ddd;
+  }
+  header a.contact {
+      font-size: 1.2em;
+      line-height: 2.5em;
+  }
+  header input {
+      margin: .5em;
+      border-radius: 25px;
+      background: #ddd;
+      text-indent: 1em;
+      height: 2em;
+      width: 20em;
+      font-size: .8em;
+  }
+
+  div.home {
+      background: url(../assets/bandeau.jpg) top center no-repeat;
+      background-size: 100% auto;
+      font-size: 1.5em;
+      padding: 3em 5em 5em 10em; 
+      color: #ddd;
+  }
+
+  section,
+  div.fish {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 0;
+  }
+  div.fish {
+      padding-top: 3em;
+  }
+  section.gallery {
+      padding: 5em;
+      padding-top: 1em;
+  }
+  section.gallery h2 {
+      width: 100%;
+      color: #333;
+  }
+  img,
+  figure.home,
+  header input,
+  header
+  {
+      box-shadow: 0px 0px 3px 0px rgba(119, 119, 119, 0.73);
+      -webkit-box-shadow: 0px 0px 3px 0px rgba(119, 119, 119, 0.73);
+  }
+  .img p {
+      margin: 0;
+      text-align: center;
+  }
+  figure {
+      padding: 1em;
+      margin: 0;
+  }
+  figure figcaption,
+  figure figcaption a:link,
+  figure figcaption a:visited {
+      margin: 0;
+      text-align: center;
+      font-weight: lighter;
+      color: #71767a;
+      font-size: 1em;
+  }
+  figure h3 {
+      margin: 0;
+      text-align: center;
+      font-weight: lighter;
+      font-size: 1em;
+      color: #aaa;
+      font-style: italic;
+  }
+</style>  <header>
+      <h1><a href="/">OliFish</a></h1>
+      <form action=/ method=get>
+          <input type=text placeholder=Recherche>
+      </form>
+      <a href=mailto:contact@olifish.com class=contact>@contact</a>
+  </header>
+    <div class=body>
+      <div class=home>
+        <p>Bonjour, je suis un photographe passionné par la plongée sous-marine.</p>
+        <p>Bienvenue sur mon portfolio de photos. J'aime observer la faune, la nature et les éco-systèmes sous-marins.</p>
+        <p>Aujourd'hui, je ne peux plus plonger sans mon appareil photo, et je suis ravi de vous présenter mon travail.</p>
+        <p>Bonne visite, n'hésitez pas <a href=mailto:contact@olifish.com class=contact>à me contacter</a> pour échanger.</p>
+        <p>Olivier Colli</p>
+        <p>contact@olifish.com</p>
+    </div>
+    <section class="gallery">
+        <h2>Mes galeries :</h2>
+        
+      <figure class="img">
+        <a href="http://www.olifish.com/galleries/brayka-baie-nov-2018.html" class="gallery">
+          <img src="http://www.olifish.com/light-thumbs/thumb-1149.jpg" alt="Brayka baie nov 2018">
+        </a>
+        <figcaption itemprop="caption description">Egypte</figcaption>
+        <h3>Brayka baie nov 2018</h3>
+      </figure>
+  
+      <figure class="img">
+        <a href="http://www.olifish.com/galleries/coraya-baie-avril-2018.html" class="gallery">
+          <img src="http://www.olifish.com/light-thumbs/thumb-1087.jpg" alt="Coraya baie avril 2018">
+        </a>
+        <figcaption itemprop="caption description">Egypte</figcaption>
+        <h3>Coraya baie avril 2018</h3>
+      </figure>
+  
+      <figure class="img">
+        <a href="http://www.olifish.com/galleries/coraya-baie-mai-2017.html" class="gallery">
+          <img src="http://www.olifish.com/light-thumbs/thumb-57.jpg" alt="Coraya baie mai 2017">
+        </a>
+        <figcaption itemprop="caption description">Égypte</figcaption>
+        <h3>Coraya baie mai 2017</h3>
+      </figure>
+  
+      <figure class="img">
+        <a href="http://www.olifish.com/galleries/coral-garden-nov-2017.html" class="gallery">
+          <img src="http://www.olifish.com/light-thumbs/thumb-733.jpg" alt="Coral garden nov 2017">
+        </a>
+        <figcaption itemprop="caption description">Égypte</figcaption>
+        <h3>Coral garden nov 2017</h3>
+      </figure>
+  
+      <figure class="img">
+        <a href="http://www.olifish.com/galleries/coraya-baie-nov-2016.html" class="gallery">
+          <img src="http://www.olifish.com/light-thumbs/thumb-233.jpg" alt="Coraya baie nov 2016">
+        </a>
+        <figcaption itemprop="caption description">Égypte</figcaption>
+        <h3>Coraya baie nov 2016</h3>
+      </figure>
+  
+      <figure class="img">
+        <a href="http://www.olifish.com/galleries/brayka-baie-nov-2015.html" class="gallery">
+          <img src="http://www.olifish.com/light-thumbs/thumb-394.jpg" alt="Brayka baie nov 2015">
+        </a>
+        <figcaption itemprop="caption description">Égypte</figcaption>
+        <h3>Brayka baie nov 2015</h3>
+      </figure>
+  
+      <figure class="img">
+        <a href="http://www.olifish.com/galleries/coral-garden-avr-2015.html" class="gallery">
+          <img src="http://www.olifish.com/light-thumbs/thumb-471.jpg" alt="Coral garden avr 2015">
+        </a>
+        <figcaption itemprop="caption description">Égypte</figcaption>
+        <h3>Coral garden avr 2015</h3>
+      </figure>
+  
+      <figure class="img">
+        <a href="http://www.olifish.com/galleries/coraya-baie-avr-2014.html" class="gallery">
+          <img src="http://www.olifish.com/light-thumbs/thumb-634.jpg" alt="Coraya baie avr 2014">
+        </a>
+        <figcaption itemprop="caption description">Égypte</figcaption>
+        <h3>Coraya baie avr 2014</h3>
+      </figure>
+  
+      <figure class="img">
+        <a href="http://www.olifish.com/galleries/coraya-baie-nov-2014.html" class="gallery">
+          <img src="http://www.olifish.com/light-thumbs/thumb-558.jpg" alt="Coraya baie nov 2014">
+        </a>
+        <figcaption itemprop="caption description">Égypte</figcaption>
+        <h3>Coraya baie nov 2014</h3>
+      </figure>
+  
+      <figure class="img">
+        <a href="http://www.olifish.com/galleries/bonaire-avril-2016.html" class="gallery">
+          <img src="http://www.olifish.com/light-thumbs/thumb-944.jpg" alt="Bonaire avril 2016">
+        </a>
+        <figcaption itemprop="caption description">Bonaire</figcaption>
+        <h3>Bonaire avril 2016</h3>
+      </figure>
+  
+      <figure class="img">
+        <a href="http://www.olifish.com/galleries/juvenile.html" class="gallery">
+          <img src="http://www.olifish.com/light-thumbs/thumb-82.jpg" alt="Juvenile">
+        </a>
+        <figcaption itemprop="caption description">Juvenile</figcaption>
+        <h3>Juvenile</h3>
+      </figure>
+  
+      <figure class="img">
+        <a href="http://www.olifish.com/galleries/nuit.html" class="gallery">
+          <img src="http://www.olifish.com/light-thumbs/thumb-698.jpg" alt="Nuit">
+        </a>
+        <figcaption itemprop="caption description">Nuit</figcaption>
+        <h3>Nuit</h3>
+      </figure>
+  
+      <figure class="img">
+        <a href="http://www.olifish.com/galleries/macro.html" class="gallery">
+          <img src="http://www.olifish.com/light-thumbs/thumb-48.jpg" alt="Macro">
+        </a>
+        <figcaption itemprop="caption description">Macro</figcaption>
+        <h3>Macro</h3>
+      </figure>
+  
+      <figure class="img">
+        <a href="http://www.olifish.com/galleries/lanzarote.html" class="gallery">
+          <img src="http://www.olifish.com/light-thumbs/thumb-24.jpg" alt="Lanzarote">
+        </a>
+        <figcaption itemprop="caption description">Les îles Canaries</figcaption>
+        <h3>Lanzarote</h3>
+      </figure>
+  
+    </section>
+  </div>
+</html>
