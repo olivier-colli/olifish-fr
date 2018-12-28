@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/olivier-colli/olifish-fr#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "js-yaml": "^3.12.0"
   }
 }
