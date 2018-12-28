@@ -22,7 +22,7 @@ const tplBody = path.join(tplDir, 'tpl-body.html')
 const readFile = promisify(fs.readFile)
 
 const readIndexFiles = Promise.all([
-  readFile(configGalleries, 'utf-8').then(galleries => ({galleries: JSON.parse(galleries)})),
+  readFile(configGalleries, 'utf-8').then(configGalleries => ({configGalleries: JSON.parse(configGalleries)})),
   readFile(tplHead, 'utf-8').then(head => ({head: head})),
   readFile(tplCss, 'utf-8').then(css => ({css: css})),
   readFile(tplJS, 'utf-8').then(js => ({js: js})),
@@ -30,36 +30,17 @@ const readIndexFiles = Promise.all([
 ])
 
 readIndexFiles.then(tplsData => {
-  const tpls = Object.assign({}, ...tplsData)
-  console.log(tpls)
+  const {configGalleries, head, js, css, body} = Object.assign({}, ...tplsData)
+  const bodyWithGalleries = body.replace('${galleries}', composeGalleries(configGalleries))
+  const index = `
+    ${head}
+    <style>${css}</style>
+    <script>${js}</script>
+    ${bodyWithGalleries}
+  </html>
+  `
+  writeHome(index)
 })
-
-
-/* 
-const composeIndex = config =>
-  fs.readFile(tplHead, 'utf8', (err, head) => {
-    if (err) throw err
-    fs.readFile(tplCss, 'utf8', (err, css) => {
-      if (err) throw err
-      fs.readFile(tplJS, 'utf8', (err, js) => {
-        if (err) throw err
-        fs.readFile(tplBody, 'utf8', (err, body) => {
-          if (err) throw err
-          const bodyWithGalleries = body.replace('${galleries}', composeGalleries(config))
-          const index = `
-              ${head}
-              <style>${css}</style>
-              <script>${js}</script>
-              ${bodyWithGalleries}
-            </html>
-          `
-          writeHome(index)
-        })
-      })
-    })
-  })
-
-readConfig(composeIndex)
 
 const writeHome = content =>
   fs.writeFile('index.html', content, 'utf8', err => {
@@ -81,4 +62,3 @@ const composeGallery = data => {
       </figure>
   `
 }
-*/
