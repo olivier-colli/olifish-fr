@@ -6,22 +6,42 @@
 */
 
 import fs from 'fs'
+import path from 'path'
+import {promisify} from 'util'
 import slugify from './slugify.mjs'
 import readConfig from './readConfig.mjs'
 
-const tpl_head = './cli/template/tpl-head.html'
-const tpl_css = './cli/template/tpl-style.css'
-const tpl_js = './cli/template/tpl-script.js'
-const tpl_index = './cli/template/tpl-index.html'
+const tplDir = './cli/template'
 
+const tplHead = path.join(tplDir, 'tpl-head.html')
+const tplCss = path.join(tplDir, 'tpl-style.css')
+const tplJS = path.join(tplDir, 'tpl-script.js')
+const tplBody = path.join(tplDir, 'tpl-body.html')
+
+const readFile = promisify(fs.readFile)
+
+const readTpls = Promise.all([
+  readFile(tplHead, 'utf-8').then(head => ({head: head})),
+  readFile(tplCss, 'utf-8').then(css => ({css: css})),
+  readFile(tplJS, 'utf-8').then(js => ({js: js})),
+  readFile(tplBody, 'utf-8').then(body => ({body: body}))
+])
+
+readTpls.then(tplsData => {
+  const tpls = Object.assign({}, ...tplsData)
+  console.log(tpls)
+})
+
+
+/* 
 const composeIndex = config =>
-  fs.readFile(tpl_head, 'utf8', (err, head) => {
+  fs.readFile(tplHead, 'utf8', (err, head) => {
     if (err) throw err
-    fs.readFile(tpl_css, 'utf8', (err, css) => {
+    fs.readFile(tplCss, 'utf8', (err, css) => {
       if (err) throw err
-      fs.readFile(tpl_js, 'utf8', (err, js) => {
+      fs.readFile(tplJS, 'utf8', (err, js) => {
         if (err) throw err
-        fs.readFile(tpl_index, 'utf8', (err, body) => {
+        fs.readFile(tplBody, 'utf8', (err, body) => {
           if (err) throw err
           const bodyWithGalleries = body.replace('${galleries}', composeGalleries(config))
           const index = `
@@ -59,3 +79,4 @@ const composeGallery = data => {
       </figure>
   `
 }
+*/
