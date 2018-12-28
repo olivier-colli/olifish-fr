@@ -8,11 +8,12 @@
 import fs from 'fs'
 import path from 'path'
 import {promisify} from 'util'
+import yaml from 'js-yaml'
 import slugify from './slugify.mjs'
 
 const tplDir = './cli/template'
 
-const configGalleries = 'galleries.json'
+const configGalleries = 'galleries.yaml'
 const tplHead = path.join(tplDir, 'tpl-head.html')
 const tplCss = path.join(tplDir, 'tpl-style.css')
 const tplJS = path.join(tplDir, 'tpl-script.js')
@@ -22,7 +23,7 @@ const tplGalleries = path.join(tplDir, 'tpl-galleries.html')
 const readFile = promisify(fs.readFile)
 
 const readIndexFiles = Promise.all([
-  readFile(configGalleries, 'utf-8').then(configGalleries => ({configGalleries: JSON.parse(configGalleries)})),
+  readFile(configGalleries, 'utf-8').then(configGalleries => ({configGalleries: yaml.load(configGalleries)})),
   readFile(tplHead, 'utf-8').then(head => ({head: head})),
   readFile(tplCss, 'utf-8').then(css => ({css: css})),
   readFile(tplJS, 'utf-8').then(js => ({js: js})),
