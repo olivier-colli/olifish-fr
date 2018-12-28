@@ -13,6 +13,7 @@ import readConfig from './readConfig.mjs'
 
 const tplDir = './cli/template'
 
+const configGalleries = 'galleries.json'
 const tplHead = path.join(tplDir, 'tpl-head.html')
 const tplCss = path.join(tplDir, 'tpl-style.css')
 const tplJS = path.join(tplDir, 'tpl-script.js')
@@ -20,14 +21,15 @@ const tplBody = path.join(tplDir, 'tpl-body.html')
 
 const readFile = promisify(fs.readFile)
 
-const readTpls = Promise.all([
+const readIndexFiles = Promise.all([
+  readFile(configGalleries, 'utf-8').then(galleries => ({galleries: JSON.parse(galleries)})),
   readFile(tplHead, 'utf-8').then(head => ({head: head})),
   readFile(tplCss, 'utf-8').then(css => ({css: css})),
   readFile(tplJS, 'utf-8').then(js => ({js: js})),
   readFile(tplBody, 'utf-8').then(body => ({body: body}))
 ])
 
-readTpls.then(tplsData => {
+readIndexFiles.then(tplsData => {
   const tpls = Object.assign({}, ...tplsData)
   console.log(tpls)
 })
