@@ -26,13 +26,20 @@ const readIndexFiles = Promise.all([
 readIndexFiles.then(promisesResult => {
     const file = keysValueArraysToMap(promisesResult)
     file.get('configGalleries').map(galleryMeta => {
+        const photos = findAllPhotos(galleryMeta.title, file.get('db')) 
+        console.log(photos)
         const gallery = composeGallery(galleryMeta)
         writeGallery(`galleries/${slugify(galleryMeta.title)}.html`, gallery)
     })
 })
 
+function findAllPhotos(query, db) {
+    return db.filter(metas => slugify(JSON.stringify(metas)).indexOf(slugify(query)) !== -1)
+}
+
 function composeGallery(meta) {
-    return `<h1>${meta.title}</h1>`
+    let htmlGallery = '<div class="fish">'
+    return htmlGallery
 }
 
 /*
