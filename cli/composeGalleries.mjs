@@ -4,34 +4,22 @@
 */
 
 import fs from 'fs'
-import path from 'path'
 import {promisify} from 'util'
 import yaml from 'js-yaml'
 import axios from 'axios'
-
-const tplDir = './cli/template'
-
-const dbUrl = 'https://www.olifish.com/data.json'
-const configGalleries = 'galleries.yaml'
-const tplHead = path.join(tplDir, 'tpl-head.html')
-const tplCss = path.join(tplDir, 'tpl-style.css')
-const tplJS = path.join(tplDir, 'tpl-script.js')
-const tplPhotoswipe = path.join(tplDir, 'tpl-photoswipe.html')
-const tplHeader = path.join(tplDir, 'tpl-header.html')
-const tplBody = path.join(tplDir, 'tpl-body.html')
-const tplGalleries = path.join(tplDir, 'tpl-galleries.html')
+import fp from './filesPath.mjs'
 
 const readFile = promisify(fs.readFile)
 
 const readGalleriesFiles = Promise.all([
-    axios.get(dbUrl).then(db => ({db: db.data})),
-    readFile(configGalleries, 'utf-8').then(configGalleries => ({configGalleries: yaml.load(configGalleries)})),
-    readFile(tplHead, 'utf-8').then(head => ({head: head})),
-    readFile(tplCss, 'utf-8').then(css => ({css: css})),
-    readFile(tplJS, 'utf-8').then(js => ({js: js})),
-    readFile(tplPhotoswipe, 'utf-8').then(photoswipe => ({photoswipe: photoswipe})),
-    readFile(tplHeader, 'utf-8').then(header => ({header: header})),
-    readFile(tplBody, 'utf-8').then(body => ({body: body})),
+    axios.get(fp.db).then(db => ({db: db.data})),
+    readFile(fp.configGalleries, 'utf-8').then(configGalleries => ({configGalleries: yaml.load(configGalleries)})),
+    readFile(fp.tplHead, 'utf-8').then(head => ({head: head})),
+    readFile(fp.tplCss, 'utf-8').then(css => ({css: css})),
+    readFile(fp.tplJS, 'utf-8').then(js => ({js: js})),
+    readFile(fp.tplPhotoswipe, 'utf-8').then(photoswipe => ({photoswipe: photoswipe})),
+    readFile(fp.tplHeader, 'utf-8').then(header => ({header: header})),
+    readFile(fp.tplGallery, 'utf-8').then(body => ({body: body})),
 ])
 
 readGalleriesFiles.then(tplsData => {
