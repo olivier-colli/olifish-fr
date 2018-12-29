@@ -6,14 +6,14 @@
 import fs from 'fs'
 import {promisify} from 'util'
 import yaml from 'js-yaml'
-import axios from 'axios'
+import db from './db.mjs'
 import {slugify, keysValueArraysToMap} from './utils.mjs'
 import fp from './filesPath.mjs'
 
 const readFile = promisify(fs.readFile)
 
 const readIndexFiles = Promise.all([
-    axios.get(fp.db).then(db => (['db', db.data])),
+    db.load().then(db => ['db', db.data]),
     readFile(fp.configGalleries, 'utf-8').then(configGalleries => (['configGalleries', yaml.load(configGalleries)])),
     readFile(fp.tplHead, 'utf-8').then(head => (['head', head])),
     readFile(fp.tplCss, 'utf-8').then(css => (['css', css])),
@@ -26,19 +26,15 @@ const readIndexFiles = Promise.all([
 readIndexFiles.then(promisesResult => {
     const file = keysValueArraysToMap(promisesResult)
     file.get('configGalleries').map(galleryMeta => {
-        const photos = findAllPhotos(galleryMeta.title, file.get('db')) 
-        console.log(photos)
-        const gallery = composeGallery(galleryMeta)
+        const photos = db.findAll( file.get('db'), galleryMeta.title)
+        const gallery = composeGallery(galleryMeta, photos)
         writeGallery(`galleries/${slugify(galleryMeta.title)}.html`, gallery)
     })
 })
 
-function findAllPhotos(query, db) {
-    return db.filter(metas => slugify(JSON.stringify(metas)).indexOf(slugify(query)) !== -1)
-}
-
-function composeGallery(meta) {
+function composeGallery(meta, photos) {
     let htmlGallery = '<div class="fish">'
+    htmlGallery += JSON.stringify(photos)
     return htmlGallery
 }
 
