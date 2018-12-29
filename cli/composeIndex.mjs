@@ -17,6 +17,7 @@ const configGalleries = 'galleries.yaml'
 const tplHead = path.join(tplDir, 'tpl-head.html')
 const tplCss = path.join(tplDir, 'tpl-style.css')
 const tplJS = path.join(tplDir, 'tpl-script.js')
+const tplHeader = path.join(tplDir, 'tpl-header.html')
 const tplBody = path.join(tplDir, 'tpl-body.html')
 const tplGalleries = path.join(tplDir, 'tpl-galleries.html')
 
@@ -27,18 +28,20 @@ const readIndexFiles = Promise.all([
     readFile(tplHead, 'utf-8').then(head => ({head: head})),
     readFile(tplCss, 'utf-8').then(css => ({css: css})),
     readFile(tplJS, 'utf-8').then(js => ({js: js})),
+    readFile(tplHeader, 'utf-8').then(header => ({header: header})),
     readFile(tplBody, 'utf-8').then(body => ({body: body})),
     readFile(tplGalleries, 'utf-8').then(galleries => ({galleries: galleries}))
 ])
 
 readIndexFiles.then(tplsData => {
-    const {configGalleries, head, js, css, body, galleries} = Object.assign({}, ...tplsData)
+    const {configGalleries, head, js, css, header, body, galleries} = Object.assign({}, ...tplsData)
     const htmlGalleries = composeGalleries(configGalleries, galleries)
     const bodyWithGalleries = nano(body, {galleries: htmlGalleries})
     const index = `
         ${head}
         <style>${css}</style>
         <script>${js}</script>
+        ${header}
         ${bodyWithGalleries}
     </html>
     `
