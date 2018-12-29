@@ -5,7 +5,7 @@
 
 import fs from 'fs'
 import path from 'path'
-import {promisify} from 'util'
+import {promisify, debuglog} from 'util'
 import yaml from 'js-yaml'
 import axios from 'axios'
 
@@ -19,19 +19,12 @@ const tplJS = path.join(tplDir, 'tpl-script.js')
 
 const readFile = promisify(fs.readFile)
 
-axios.get(dbUrl)
-    .then(response => console.log(response))
-    .catch(error => console.log(error))
-
-// httpsGet(dbUrl).then(data => data).then(data => console.log(data))
-
-
-/*
 const readGalleriesFiles = Promise.all([
+    axios.get(dbUrl).then(db => ({db: db.data})),
     readFile(configGalleries, 'utf-8').then(configGalleries => ({configGalleries: yaml.load(configGalleries)})),
     readFile(tplHead, 'utf-8').then(head => ({head: head})),
     readFile(tplCss, 'utf-8').then(css => ({css: css})),
-    readFile(tplJS, 'utf-8').then(js => ({js: js})),
+    readFile(tplJS, 'utf-8').then(js => ({js: js}))
 ])
 
 readGalleriesFiles.then(tplsData => {
@@ -41,11 +34,6 @@ readGalleriesFiles.then(tplsData => {
 /*
 readConfig(composeGallery)
 
-function composeGallery(config) {
-  fs.readFile('tpl-header.html', 'utf8', (err, header) => {
-    if (err) throw err
-    fs.readFile('tpl-style.html', 'utf8', (err, style) => {
-      if (err) throw err
       fs.readFile('tpl-gallery.html', 'utf8', (err, html) => {
         if (err) throw err
         fs.readFile('data.json', 'utf8', (err, data) => {
