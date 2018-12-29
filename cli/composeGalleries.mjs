@@ -7,78 +7,79 @@ import fs from 'fs'
 import {promisify} from 'util'
 import yaml from 'js-yaml'
 import axios from 'axios'
+import {slugify, keysValueArraysToMap} from './utils.mjs'
 import fp from './filesPath.mjs'
 
 const readFile = promisify(fs.readFile)
 
-const readGalleriesFiles = Promise.all([
-    axios.get(fp.db).then(db => ({db: db.data})),
-    readFile(fp.configGalleries, 'utf-8').then(configGalleries => ({configGalleries: yaml.load(configGalleries)})),
-    readFile(fp.tplHead, 'utf-8').then(head => ({head: head})),
-    readFile(fp.tplCss, 'utf-8').then(css => ({css: css})),
-    readFile(fp.tplJS, 'utf-8').then(js => ({js: js})),
-    readFile(fp.tplPhotoswipe, 'utf-8').then(photoswipe => ({photoswipe: photoswipe})),
-    readFile(fp.tplHeader, 'utf-8').then(header => ({header: header})),
-    readFile(fp.tplGallery, 'utf-8').then(body => ({body: body})),
+const readIndexFiles = Promise.all([
+    axios.get(fp.db).then(db => (['db', db.data])),
+    readFile(fp.configGalleries, 'utf-8').then(configGalleries => (['configGalleries', yaml.load(configGalleries)])),
+    readFile(fp.tplHead, 'utf-8').then(head => (['head', head])),
+    readFile(fp.tplCss, 'utf-8').then(css => (['css', css])),
+    readFile(fp.tplJS, 'utf-8').then(js => (['js', js])),
+    readFile(fp.tplPhotoswipe, 'utf-8').then(photoswipe => (['photoswipe', photoswipe])),
+    readFile(fp.tplHeader, 'utf-8').then(header => (['header', header])),
+    readFile(fp.tplGallery, 'utf-8').then(body => (['body', body])),
 ])
 
-readGalleriesFiles.then(tplsData => {
-    console.log(tplsData)
+readIndexFiles.then(promisesResult => {
+    const file = keysValueArraysToMap(promisesResult)
+    file.get('configGalleries').map(galleryMeta => {
+        const gallery = composeGallery(galleryMeta)
+        writeGallery(`galleries/${slugify(galleryMeta.title)}.html`, gallery)
+    })
 })
 
-/*
-readConfig(composeGallery)
-
-      fs.readFile('tpl-gallery.html', 'utf8', (err, html) => {
-        if (err) throw err
-        fs.readFile('data.json', 'utf8', (err, data) => {
-          config.map(galleryData => {
-            let htmlGallery = '<div class="fish">'
-            htmlGallery += JSON.parse(data)
-              .filter(metas =>
-                slugify(JSON.stringify(metas)).indexOf(slugify(galleryData.title)) !== -1
-              )
-              .sort((a, b) => (a.Fr > b.Fr) ? 1 : ((b.Fr > a.Fr) ? -1 : 0) )
-              .map((metas, index) => {
-                const img = {}
-                const fishname = {}
-                const [width, height] = metas.imageSize.split('x')
-
-                function fishnametoAnchor(fishname) {
-                  try {
-                    return fishname.split(' ')
-                      .map(word => `<a href="/galleries/#${slugify(word)}">${word}</a>`)
-                      .join(' ')
-                  } catch (err) {
-                    return '-'
-                  }
-                }
-
-                img.width = +width > +height ? '300px' : '133px'
-                img.height = '200px'
-                fishname.fr = fishnamc <&      font-size: 1.2em;
-                line-height: 2.5em;zetoAnchor(metas.Fr)
-                fishname.lat = fishnametoAnchor(metas.Lat)
-                return `
-      <figure class="img" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject">
-        <a data-caption="${metas.Fr} - <i>${metas.Lat}</i>" itemprop="contentUrl" data-size="${metas.targetImageSize}" href="${metas.fileName.img}">
-          <img itemprop="thumbnail" alt="${metas.Fr} - ${metas.Lat}" data-id="${index}" src="${metas.fileName.thumbnail}" style="width: ${img.width}; height: ${img.height};" title="${metas.title}">
-        </a>
-        <figcaption itemprop="caption description">${fishname.fr}</figcaption>   
-        <h3>${fishname.lat}</h3>
-      </figure>
-            `} 
-            )
-            .join()
-            htmlGallery += '</div>'
-            const galleryPage = header + style + html.replace('${photos}', htmlGallery)
-            writeGallery(`galleries/${slugify(galleryData.title)}.html`, galleryPage)
-          })
-        })
-      })
-    })
-  })
+function composeGallery(meta) {
+    return `<h1>${meta.title}</h1>`
 }
+
+/*
+configGalleries.map(galleryData => {
+    let htmlGallery = '<div class="fish">'
+    htmlGallery += JSON.parse(data)
+        .filter(metas =>
+            slugify(JSON.stringify(metas)).indexOf(slugify(galleryData.title)) !== -1
+        )
+        .sort((a, b) => (a.Fr > b.Fr) ? 1 : ((b.Fr > a.Fr) ? -1 : 0) )
+        .map((metas, index) => {
+            const img = {}
+            const fishname = {}
+            const [width, height] = metas.imageSize.split('x')
+
+            function fishnametoAnchor(fishname) {
+            try {
+                return fishname.split(' ')
+                .map(word => `<a href="/galleries/#${slugify(word)}">${word}</a>`)
+                .join(' ')
+            } catch (err) {
+                return '-'
+            }
+            }
+
+            img.width = +width > +height ? '300px' : '133px'
+            img.height = '200px'
+            fishname.fr = fishnamc <&      font-size: 1.2em;
+            line-height: 2.5em;zetoAnchor(metas.Fr)
+            fishname.lat = fishnametoAnchor(metas.Lat)
+            return `
+                <figure class="img" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject">
+                <a data-caption="${metas.Fr} - <i>${metas.Lat}</i>" itemprop="contentUrl" data-size="${metas.targetImageSize}" href="${metas.fileName.img}">
+                <img itemprop="thumbnail" alt="${metas.Fr} - ${metas.Lat}" data-id="${index}" src="${metas.fileName.thumbnail}" style="width: ${img.width}; height: ${img.height};" title="${metas.title}">
+                </a>
+                <figcaption itemprop="caption description">${fishname.fr}</figcaption>   
+                <h3>${fishname.lat}</h3>
+                </figure>
+            `
+        } 
+      )
+      .join()
+      htmlGallery += '</div>'
+      const galleryPage = header + style + html.replace('${photos}', htmlGallery)
+      writeGallery(`galleries/${slugify(galleryData.title)}.html`, galleryPage)
+})
+*/
 
 function writeGallery(name, content) {
   fs.writeFile(name, content, 'utf8', err => {
@@ -102,4 +103,3 @@ function composePhoto(data) {
       </figure>
   `
 }
-*/
