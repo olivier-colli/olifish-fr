@@ -1,4 +1,4 @@
-export default text => {
+function slugify(text) {
     const a = 'àáäâèéëêìíïîòóöôùúüûñçßÿœæŕśńṕẃǵǹḿǘẍźḧ·/_,:;'
     const b = 'aaaaeeeeiiiioooouuuuncsyoarsnpwgnmuxzh------'
     const p = new RegExp(a.split('').join('|'), 'g')
@@ -13,3 +13,13 @@ export default text => {
         .replace(/^-+/, '') // Trim - from start of text
         .replace(/-+$/, '') // Trim - from end of text
 }
+
+function keysValueArraysToMap(result) {
+    const map = new Map()
+    for (const keyValue of result) {
+        map.set(keyValue[0], keyValue[1])
+    }
+    return map
+}
+
+export {slugify, keysValueArraysToMap}

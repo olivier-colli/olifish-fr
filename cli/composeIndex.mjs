@@ -6,40 +6,35 @@
 */
 
 import fs from 'fs'
-import path from 'path'
 import {promisify} from 'util'
 import yaml from 'js-yaml'
-import slugify from './slugify.mjs'
-
-const tplDir = './cli/template'
-
-const configGalleries = 'galleries.yaml'
-const tplHead = path.join(tplDir, 'tpl-head.html')
-const tplCss = path.join(tplDir, 'tpl-style.css')
-const tplJS = path.join(tplDir, 'tpl-script.js')
-const tplBody = path.join(tplDir, 'tpl-body.html')
-const tplGalleries = path.join(tplDir, 'tpl-galleries.html')
+import {slugify, keysValueArraysToMap} from './utils.mjs'
+import path_ from './path.mjs'
+import nano from './nano.mjs'
 
 const readFile = promisify(fs.readFile)
 
 const readIndexFiles = Promise.all([
-    readFile(configGalleries, 'utf-8').then(configGalleries => ({configGalleries: yaml.load(configGalleries)})),
-    readFile(tplHead, 'utf-8').then(head => ({head: head})),
-    readFile(tplCss, 'utf-8').then(css => ({css: css})),
-    readFile(tplJS, 'utf-8').then(js => ({js: js})),
-    readFile(tplBody, 'utf-8').then(body => ({body: body})),
-    readFile(tplGalleries, 'utf-8').then(galleries => ({galleries: galleries}))
+    readFile(path_.configGalleries, 'utf-8').then(configGalleries => (['configGalleries', yaml.load(configGalleries)])),
+    readFile(path_.tplHead, 'utf-8').then(head => (['head', head])),
+    readFile(path_.tplCss, 'utf-8').then(css => (['css', css])),
+    readFile(path_.tplJS, 'utf-8').then(js => (['js', js])),
+    readFile(path_.tplHeader, 'utf-8').then(header => (['header', header])),
+    readFile(path_.tplIndex, 'utf-8').then(body => (['body', body])),
+    readFile(path_.tplGalleries, 'utf-8').then(galleries => (['galleries', galleries]))
 ])
 
-readIndexFiles.then(tplsData => {
-    const {configGalleries, head, js, css, body, galleries} = Object.assign({}, ...tplsData)
-    const htmlGalleries = composeGalleries(configGalleries, galleries)
-    const bodyWithGalleries = nano(body, {galleries: htmlGalleries})
+readIndexFiles.then(promisesResult => {
+    const file = keysValueArraysToMap(promisesResult)
+
+    const htmlGalleries = composeGalleries(file.get('configGalleries'), file.get('galleries'))
+    const body = nano(file.get('body'), {galleries: htmlGalleries})
     const index = `
-        ${head}
-        <style>${css}</style>
-        <script>${js}</script>
-        ${bodyWithGalleries}
+        ${file.get('head')}
+        <style>${file.get('css')}</style>
+        <script>${file.get('js')}</script>
+        ${file.get('header')}
+        ${body}
     </html>
     `
     writeHome(index)
@@ -62,14 +57,4 @@ function composeGallery(data, tpl) {
         src: `https://www.olifish.com/light-thumbs/thumb-${data.img}.jpg`
     }
     return nano(tpl, datas)
-}
-
-/* Nano Templates - https://github.com/trix/nano */
-function nano(template, data) {
-    return template.replace(/\{([\w.]*)\}/g, function(str, key) {
-        const keys = key.split('.')
-        let v = data[keys.shift()]
-        for (let i = 0, l = keys.length; i < l; i++) v = v[keys[i]]
-        return (typeof v !== 'undefined' && v !== null) ? v : ''
-    })
 }
