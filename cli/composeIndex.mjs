@@ -10,6 +10,7 @@ import {promisify} from 'util'
 import yaml from 'js-yaml'
 import {slugify, keysValueArraysToMap} from './utils.mjs'
 import fp from './filesPath.mjs'
+import nano from './nano.mjs'
 
 const readFile = promisify(fs.readFile)
 
@@ -56,14 +57,4 @@ function composeGallery(data, tpl) {
         src: `https://www.olifish.com/light-thumbs/thumb-${data.img}.jpg`
     }
     return nano(tpl, datas)
-}
-
-/* Nano Templates - https://github.com/trix/nano */
-function nano(template, data) {
-    return template.replace(/\{([\w.]*)\}/g, function(str, key) {
-        const keys = key.split('.')
-        let v = data[keys.shift()]
-        for (let i = 0, l = keys.length; i < l; i++) v = v[keys[i]]
-        return (typeof v !== 'undefined' && v !== null) ? v : ''
-    })
 }
