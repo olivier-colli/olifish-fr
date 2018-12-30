@@ -28,13 +28,13 @@ readIndexFiles.then(promisesResult => {
     const file = keysValueArraysToMap(promisesResult)
 
     const htmlGalleries = composeGalleries(file.get('configGalleries'), file.get('galleries'))
-    const bodyWithGalleries = nano(file.get('body'), {galleries: htmlGalleries})
+    const body = nano(file.get('body'), {galleries: htmlGalleries})
     const index = `
         ${file.get('head')}
         <style>${file.get('css')}</style>
         <script>${file.get('js')}</script>
         ${file.get('header')}
-        ${bodyWithGalleries}
+        ${body}
     </html>
     `
     writeHome(index)
