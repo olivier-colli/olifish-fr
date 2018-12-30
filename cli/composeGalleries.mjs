@@ -4,6 +4,7 @@
 */
 
 import fs from 'fs'
+import path from 'path'
 import {promisify} from 'util'
 import yaml from 'js-yaml'
 import db from './db.mjs'
@@ -40,7 +41,8 @@ readIndexFiles.then(promisesResult => {
             ${body}
         </html>
         `
-        writeGallery(`galleries/${slugify(galleryMeta.title)}.html`, galleryPage)
+        const galleryPath = path.join(path_.galleriesDir, `${slugify(galleryMeta.title)}.html`)
+        writeGallery(galleryPath, galleryPage)
     })
 })
 
@@ -64,77 +66,8 @@ function composeGallery(galleryMetas, photosMetas, file) {
     return htmlGallery
 }
 
-/*
-{
-    keywords:['Nom allemand','Nom anglais','nom francais','nom latin'],
-    De:'Partnergarnele'
-    Eng:'Anemone shrimp'
-    Fr: 'Crevette commensale'
-    Lat':'Ancylomenes Sarasvati',
-    fileName: {'thumbnail':'/light-thumbs/thumb-734.jpg','img':'/img/img-734.jpg'}
-    dateCreated: "2010-01-01T00:00:00.000Z",
-    imageSiz":"300x200",
-    targetImageSize:"2400x1600",
-    location:"egypte-coral-garden-nov-2017",
-    title:"Canon EOS 6D"
-/*
-        .map((metas, index) => {
-            const img = {}
-            const fishname = {}
-            const [width, height] = metas.imageSize.split('x')
-
-            function fishnametoAnchor(fishname) {
-            try {
-                return fishname.split(' ')
-                .map(word => `<a href='/galleries/#${slugify(word)}'>${word}</a>`)
-                .join(' ')
-            } catch (err) {
-                return '-'
-            }
-            }
-
-            img.width = +width > +height ? '300px' : '133px'
-            img.height = '200px'
-            fishname.fr = fishnamc <&      font-size: 1.2em;
-            line-height: 2.5em;zetoAnchor(metas.Fr)
-            fishname.lat = fishnametoAnchor(metas.Lat)
-            return `
-                <figure class='img' itemprop='associatedMedia' itemscope='' itemtype='http://schema.org/ImageObject'>
-                <a data-caption='${metas.Fr} - <i>${metas.Lat}</i>' itemprop='contentUrl' data-size='${metas.targetImageSize}' href='${metas.fileName.img}'>
-                <img itemprop='thumbnail' alt='${metas.Fr} - ${metas.Lat}' data-id='${index}' src='${metas.fileName.thumbnail}' style='width: ${img.width}; height: ${img.height};' title='${metas.title}'>
-                </a>
-                <figcaption itemprop='caption description'>${fishname.fr}</figcaption>   
-                <h3>${fishname.lat}</h3>
-                </figure>
-            `
-        } 
-      )
-      .join()
-      htmlGallery += '</div>'
-      const galleryPage = header + style + html.replace('${photos}', htmlGallery)
-      writeGallery(`galleries/${slugify(galleryData.title)}.html`, galleryPage)
-})
-*/
-
 function writeGallery(name, content) {
     fs.writeFile(name, content, 'utf8', err => {
         if (err) throw err
     })
-}
-
-function composeGalleries(config) {
-    return config.map(galleryData => composePhoto(galleryData)).join('')
-}
-
-function composePhoto(data) {
-    const {title, description, img} = data
-    return `
-        <figure class='img'>
-        <a href='/galleries/${slugify(title)}.html' class='gallery'>
-            <img src='./light-thumbs/thumb-${img}.jpg' alt='${title}'>
-        </a>
-        <figcaption itemprop='caption description'>${description}</figcaption>
-        <h3>${title}</h3>
-        </figure>
-    `
 }

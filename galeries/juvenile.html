@@ -1,0 +1,369 @@
+
+            <!DOCTYPE html>
+  <html itemscope itemtype=http://schema.org/WebPage lang=fr>
+  <meta charset=utf-8>
+  <meta name=viewport content="width=device-width, user-scalable=no">
+  <title>Olifish : Portfolio d'Olivier Colli</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108901544-1"></script>
+
+            <style>body {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
+    background:  #f7f8fa;
+    width: 100%;
+}
+a:link,
+a:visited {
+    text-decoration: none;
+    color: #9fa6b5;
+}
+header {
+    position: fixed;
+    width: 100%;
+    background: #2e4e72;
+    height: 3em;
+    display: flex;
+    justify-content: space-around;
+}
+header h1 {
+    line-height: .2em;
+    color: #ddd;
+}
+header a.contact {
+    font-size: 1.2em;
+    line-height: 2.5em;
+}
+header input {
+    margin: .5em;
+    border-radius: 25px;
+    background: #ddd;
+    text-indent: 1em;
+    height: 2em;
+    width: 20em;
+    font-size: .8em;
+}
+
+div.home {
+    background: url(../assets/bandeau.jpg) top center no-repeat;
+    background-size: 100% auto;
+    font-size: 1.5em;
+    padding: 3em 5em 5em 10em; 
+    color: #ddd;
+}
+
+section,
+div.fish {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0;
+}
+div.fish {
+    padding-top: 3em;
+}
+section.gallery {
+    padding: 5em;
+    padding-top: 1em;
+}
+section.gallery h2 {
+    width: 100%;
+    color: #333;
+}
+img,
+figure.home,
+header input,
+header
+{
+    box-shadow: 0px 0px 3px 0px rgba(119, 119, 119, 0.73);
+    -webkit-box-shadow: 0px 0px 3px 0px rgba(119, 119, 119, 0.73);
+}
+.img p {
+    margin: 0;
+    text-align: center;
+}
+figure {
+    padding: 1em;
+    margin: 0;
+}
+figure figcaption,
+figure figcaption a:link,
+figure figcaption a:visited {
+    margin: 0;
+    text-align: center;
+    font-weight: lighter;
+    color: #71767a;
+    font-size: 1em;
+}
+figure h3 {
+    margin: 0;
+    text-align: center;
+    font-weight: lighter;
+    font-size: 1em;
+    color: #aaa;
+    font-style: italic;
+}
+</style>
+            <script>window.dataLayer = window.dataLayer || []
+function gtag(){dataLayer.push(arguments)}
+gtag('js', new Date())
+gtag('config', 'UA-108901544-1')
+
+window.addEventListener('DOMContentLoaded', () => {
+    window.onsubmit = event => {
+        event.preventDefault()
+        const query = document.querySelector('input').value
+        document.location.href = `/galleries/#${slugify(query)}`
+    }
+})
+
+const slugify = text => {
+    const a = 'àáäâèéëêìíïîòóöôùúüûñçßÿœæŕśńṕẃǵǹḿǘẍźḧ·/_,:;'
+    const b = 'aaaaeeeeiiiioooouuuuncsyoarsnpwgnmuxzh------'
+    const p = new RegExp(a.split('').join('|'), 'g')
+
+    return text.toString().toLowerCase()
+        .replace(/\s+/g, '-') // Replace spaces with -
+        .replace(p, c =>
+            b.charAt(a.indexOf(c))) // Replace special chars
+        .replace(/&/g, '-and-') // Replace & with 'and'
+        .replace(/[^\w-]+/g, '') // Remove all non-word chars
+        .replace(/--+/g, '-') // Replace multiple - with single -
+        .replace(/^-+/, '') // Trim - from start of text
+        .replace(/-+$/, '') // Trim - from end of text
+}
+</script>
+            <script src=/node_modules/photoswipe/dist/photoswipe.min.js></script>
+<script src=/node_modules/photoswipe/dist/photoswipe-ui-default.min.js></script>
+
+<script src=/assets/photoswipe.js></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', evt => {
+        photoSwipe.init()  
+    })
+</script>
+
+<link rel=stylesheet href=/node_modules/photoswipe/dist/photoswipe.css>
+<link rel=stylesheet href=/node_modules/photoswipe/dist/default-skin/default-skin.css>
+
+            <header>
+    <h1><a href="/">OliFish</a></h1>
+    <form action=/ method=get>
+        <input type=text placeholder=Recherche>
+    </form>
+    <a href=mailto:contact@olifish.com class=contact>@contact</a>
+</header>
+            <div class=body>
+    <div class=fish><figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Apogon sp - <em>Cheilodipterus sp</em>" itemprop=contentUrl data-size="2400x1600" href="https://www.olifish.com/img/img-1221.jpg">
+    <img itemprop="thumbnail" alt="Apogon sp - Cheilodipterus sp" data-id="0" src="https://www.olifish.com/light-thumbs/thumb-1221.jpg" style="width: 300px; height: 200px;" title="Canon EOS 6D">
+    </a>
+    <figcaption itemprop="caption description">Cheilodipterus sp</figcaption>   
+    <h3>Apogon sp</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Apogon sp - <em>Cheilodipterus sp</em>" itemprop=contentUrl data-size="2400x1600" href="https://www.olifish.com/img/img-1175.jpg">
+    <img itemprop="thumbnail" alt="Apogon sp - Cheilodipterus sp" data-id="1" src="https://www.olifish.com/light-thumbs/thumb-1175.jpg" style="width: 300px; height: 200px;" title="Canon EOS 6D">
+    </a>
+    <figcaption itemprop="caption description">Cheilodipterus sp</figcaption>   
+    <h3>Apogon sp</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Apogon à grandes dents - <em>Cheilodipterus macrodon</em>" itemprop=contentUrl data-size="2400x1600" href="https://www.olifish.com/img/img-44.jpg">
+    <img itemprop="thumbnail" alt="Apogon à grandes dents - Cheilodipterus macrodon" data-id="2" src="https://www.olifish.com/light-thumbs/thumb-44.jpg" style="width: 300px; height: 200px;" title="Canon EOS 6D">
+    </a>
+    <figcaption itemprop="caption description">Cheilodipterus macrodon</figcaption>   
+    <h3>Apogon à grandes dents</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Apogon à grandes dents - <em>Cheilodipterus macrodon</em>" itemprop=contentUrl data-size="2400x1600" href="https://www.olifish.com/img/img-88.jpg">
+    <img itemprop="thumbnail" alt="Apogon à grandes dents - Cheilodipterus macrodon" data-id="3" src="https://www.olifish.com/light-thumbs/thumb-88.jpg" style="width: 300px; height: 200px;" title="Canon EOS 6D">
+    </a>
+    <figcaption itemprop="caption description">Cheilodipterus macrodon</figcaption>   
+    <h3>Apogon à grandes dents</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Apogon à rayures jaunes - <em>Ostorhinchus cyanosoma</em>" itemprop=contentUrl data-size="2400x1600" href="https://www.olifish.com/img/img-116.jpg">
+    <img itemprop="thumbnail" alt="Apogon à rayures jaunes - Ostorhinchus cyanosoma" data-id="4" src="https://www.olifish.com/light-thumbs/thumb-116.jpg" style="width: 300px; height: 200px;" title="Canon EOS 6D">
+    </a>
+    <figcaption itemprop="caption description">Ostorhinchus cyanosoma</figcaption>   
+    <h3>Apogon à rayures jaunes</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Dascyllus a trois points - <em>Dascyllus Trimaculatus</em>" itemprop=contentUrl data-size="2400x1600" href="https://www.olifish.com/img/img-1297.jpg">
+    <img itemprop="thumbnail" alt="Dascyllus a trois points - Dascyllus Trimaculatus" data-id="5" src="https://www.olifish.com/light-thumbs/thumb-1297.jpg" style="width: 300px; height: 200px;" title="Canon EOS 6D">
+    </a>
+    <figcaption itemprop="caption description">Dascyllus Trimaculatus</figcaption>   
+    <h3>Dascyllus a trois points</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Demoiselle a trois points - <em>Stegastes planifrons</em>" itemprop=contentUrl data-size="2400x1600" href="https://www.olifish.com/img/img-822.jpg">
+    <img itemprop="thumbnail" alt="Demoiselle a trois points - Stegastes planifrons" data-id="6" src="https://www.olifish.com/light-thumbs/thumb-822.jpg" style="width: 300px; height: 200px;" title="Canon EOS 600D">
+    </a>
+    <figcaption itemprop="caption description">Stegastes planifrons</figcaption>   
+    <h3>Demoiselle a trois points</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Demoiselle noire - <em>Stegastes diencaeus</em>" itemprop=contentUrl data-size="2400x1600" href="https://www.olifish.com/img/img-894.jpg">
+    <img itemprop="thumbnail" alt="Demoiselle noire - Stegastes diencaeus" data-id="7" src="https://www.olifish.com/light-thumbs/thumb-894.jpg" style="width: 300px; height: 200px;" title="Canon EOS 600D">
+    </a>
+    <figcaption itemprop="caption description">Stegastes diencaeus</figcaption>   
+    <h3>Demoiselle noire</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Empereur bossu - <em>Monotaxis grandoculis</em>" itemprop=contentUrl data-size="2400x1600" href="https://www.olifish.com/img/img-1079.jpg">
+    <img itemprop="thumbnail" alt="Empereur bossu - Monotaxis grandoculis" data-id="8" src="https://www.olifish.com/light-thumbs/thumb-1079.jpg" style="width: 300px; height: 200px;" title="Canon EOS 6D">
+    </a>
+    <figcaption itemprop="caption description">Monotaxis grandoculis</figcaption>   
+    <h3>Empereur bossu</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Girelle clown - <em>Coris aygula</em>" itemprop=contentUrl data-size="2400x1600" href="https://www.olifish.com/img/img-82.jpg">
+    <img itemprop="thumbnail" alt="Girelle clown - Coris aygula" data-id="9" src="https://www.olifish.com/light-thumbs/thumb-82.jpg" style="width: 300px; height: 200px;" title="Canon EOS 6D">
+    </a>
+    <figcaption itemprop="caption description">Coris aygula</figcaption>   
+    <h3>Girelle clown</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Girelle verte - <em>Thalassoma lunare</em>" itemprop=contentUrl data-size="1060x1600" href="https://www.olifish.com/img/img-1121.jpg">
+    <img itemprop="thumbnail" alt="Girelle verte - Thalassoma lunare" data-id="10" src="https://www.olifish.com/light-thumbs/thumb-1121.jpg" style="width: 133px; height: 200px;" title="Canon EOS 6D">
+    </a>
+    <figcaption itemprop="caption description">Thalassoma lunare</figcaption>   
+    <h3>Girelle verte</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Labre échiquier - <em>Halichoeres hortulanus</em>" itemprop=contentUrl data-size="2400x1600" href="https://www.olifish.com/img/img-73.jpg">
+    <img itemprop="thumbnail" alt="Labre échiquier - Halichoeres hortulanus" data-id="11" src="https://www.olifish.com/light-thumbs/thumb-73.jpg" style="width: 300px; height: 200px;" title="Canon EOS 6D">
+    </a>
+    <figcaption itemprop="caption description">Halichoeres hortulanus</figcaption>   
+    <h3>Labre échiquier</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Labre échiquier - <em>Halichoeres hortulanus</em>" itemprop=contentUrl data-size="2400x1600" href="https://www.olifish.com/img/img-1209.jpg">
+    <img itemprop="thumbnail" alt="Labre échiquier - Halichoeres hortulanus" data-id="12" src="https://www.olifish.com/light-thumbs/thumb-1209.jpg" style="width: 300px; height: 200px;" title="Canon EOS 6D">
+    </a>
+    <figcaption itemprop="caption description">Halichoeres hortulanus</figcaption>   
+    <h3>Labre échiquier</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Platax a grandes ailes - <em>Platax teira</em>" itemprop=contentUrl data-size="2400x1600" href="https://www.olifish.com/img/img-482.jpg">
+    <img itemprop="thumbnail" alt="Platax a grandes ailes - Platax teira" data-id="13" src="https://www.olifish.com/light-thumbs/thumb-482.jpg" style="width: 300px; height: 200px;" title="Canon EOS 600D">
+    </a>
+    <figcaption itemprop="caption description">Platax teira</figcaption>   
+    <h3>Platax a grandes ailes</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Platax a grandes ailes - <em>Platax teira</em>" itemprop=contentUrl data-size="1060x1600" href="https://www.olifish.com/img/img-483.jpg">
+    <img itemprop="thumbnail" alt="Platax a grandes ailes - Platax teira" data-id="14" src="https://www.olifish.com/light-thumbs/thumb-483.jpg" style="width: 133px; height: 200px;" title="Canon EOS 600D">
+    </a>
+    <figcaption itemprop="caption description">Platax teira</figcaption>   
+    <h3>Platax a grandes ailes</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Poisson ange francais - <em>Pomacanthus paru</em>" itemprop=contentUrl data-size="2400x1600" href="https://www.olifish.com/img/img-851.jpg">
+    <img itemprop="thumbnail" alt="Poisson ange francais - Pomacanthus paru" data-id="15" src="https://www.olifish.com/light-thumbs/thumb-851.jpg" style="width: 300px; height: 200px;" title="Canon EOS 600D">
+    </a>
+    <figcaption itemprop="caption description">Pomacanthus paru</figcaption>   
+    <h3>Poisson ange francais</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Poisson cochon lyre - <em>Bodianus anthioides</em>" itemprop=contentUrl data-size="2400x1600" href="https://www.olifish.com/img/img-591.jpg">
+    <img itemprop="thumbnail" alt="Poisson cochon lyre - Bodianus anthioides" data-id="16" src="https://www.olifish.com/light-thumbs/thumb-591.jpg" style="width: 300px; height: 200px;" title="Canon EOS 6D">
+    </a>
+    <figcaption itemprop="caption description">Bodianus anthioides</figcaption>   
+    <h3>Poisson cochon lyre</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Poisson cochon lyre - <em>Bodianus anthioides</em>" itemprop=contentUrl data-size="2400x1600" href="https://www.olifish.com/img/img-53.jpg">
+    <img itemprop="thumbnail" alt="Poisson cochon lyre - Bodianus anthioides" data-id="17" src="https://www.olifish.com/light-thumbs/thumb-53.jpg" style="width: 300px; height: 200px;" title="Canon EOS 6D">
+    </a>
+    <figcaption itemprop="caption description">Bodianus anthioides</figcaption>   
+    <h3>Poisson cochon lyre</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Poisson cochon lyre - <em>Bodianus anthioides</em>" itemprop=contentUrl data-size="2400x1600" href="https://www.olifish.com/img/img-31.jpg">
+    <img itemprop="thumbnail" alt="Poisson cochon lyre - Bodianus anthioides" data-id="18" src="https://www.olifish.com/light-thumbs/thumb-31.jpg" style="width: 300px; height: 200px;" title="Canon EOS 6D">
+    </a>
+    <figcaption itemprop="caption description">Bodianus anthioides</figcaption>   
+    <h3>Poisson cochon lyre</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Poisson faucon de forster - <em>Paracirrhites forsteri</em>" itemprop=contentUrl data-size="1060x1600" href="https://www.olifish.com/img/img-47.jpg">
+    <img itemprop="thumbnail" alt="Poisson faucon de forster - Paracirrhites forsteri" data-id="19" src="https://www.olifish.com/light-thumbs/thumb-47.jpg" style="width: 133px; height: 200px;" title="Canon EOS 6D">
+    </a>
+    <figcaption itemprop="caption description">Paracirrhites forsteri</figcaption>   
+    <h3>Poisson faucon de forster</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Salarias brun - <em>Atrosalarias fuscus</em>" itemprop=contentUrl data-size="2400x1600" href="https://www.olifish.com/img/img-754.jpg">
+    <img itemprop="thumbnail" alt="Salarias brun - Atrosalarias fuscus" data-id="20" src="https://www.olifish.com/light-thumbs/thumb-754.jpg" style="width: 300px; height: 200px;" title="Canon EOS 6D">
+    </a>
+    <figcaption itemprop="caption description">Atrosalarias fuscus</figcaption>   
+    <h3>Salarias brun</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Tamarin a bandes - <em>Hemigymnus fasciatus</em>" itemprop=contentUrl data-size="2400x1600" href="https://www.olifish.com/img/img-607.jpg">
+    <img itemprop="thumbnail" alt="Tamarin a bandes - Hemigymnus fasciatus" data-id="21" src="https://www.olifish.com/light-thumbs/thumb-607.jpg" style="width: 300px; height: 200px;" title="Canon EOS 6D">
+    </a>
+    <figcaption itemprop="caption description">Hemigymnus fasciatus</figcaption>   
+    <h3>Tamarin a bandes</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Vieille à lignes violettes - <em>Oxycheilinus digramma</em>" itemprop=contentUrl data-size="2400x1600" href="https://www.olifish.com/img/img-711.jpg">
+    <img itemprop="thumbnail" alt="Vieille à lignes violettes - Oxycheilinus digramma" data-id="22" src="https://www.olifish.com/light-thumbs/thumb-711.jpg" style="width: 300px; height: 200px;" title="Canon EOS 6D">
+    </a>
+    <figcaption itemprop="caption description">Oxycheilinus digramma</figcaption>   
+    <h3>Vieille à lignes violettes</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Vieille à lignes violettes - <em>Oxycheilinus digramma</em>" itemprop=contentUrl data-size="2400x1600" href="https://www.olifish.com/img/img-1113.jpg">
+    <img itemprop="thumbnail" alt="Vieille à lignes violettes - Oxycheilinus digramma" data-id="23" src="https://www.olifish.com/light-thumbs/thumb-1113.jpg" style="width: 300px; height: 200px;" title="Canon EOS 6D">
+    </a>
+    <figcaption itemprop="caption description">Oxycheilinus digramma</figcaption>   
+    <h3>Vieille à lignes violettes</h3>
+</figure>
+
+</div>
+
+<div class=pswp tabindex=-1 role=dialog aria-hidden=true>
+    <div class=pswp__bg></div>
+    <div class=pswp__scroll-wrap>
+        <div class=pswp__container>
+            <div class=pswp__item></div>
+            <div class=pswp__item></div>
+            <div class=pswp__item></div>
+        </div>
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </html>
+        

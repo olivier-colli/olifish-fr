@@ -1,0 +1,383 @@
+
+            <!DOCTYPE html>
+  <html itemscope itemtype=http://schema.org/WebPage lang=fr>
+  <meta charset=utf-8>
+  <meta name=viewport content="width=device-width, user-scalable=no">
+  <title>Olifish : Portfolio d'Olivier Colli</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108901544-1"></script>
+
+            <style>body {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
+    background:  #f7f8fa;
+    width: 100%;
+}
+a:link,
+a:visited {
+    text-decoration: none;
+    color: #9fa6b5;
+}
+header {
+    position: fixed;
+    width: 100%;
+    background: #2e4e72;
+    height: 3em;
+    display: flex;
+    justify-content: space-around;
+}
+header h1 {
+    line-height: .2em;
+    color: #ddd;
+}
+header a.contact {
+    font-size: 1.2em;
+    line-height: 2.5em;
+}
+header input {
+    margin: .5em;
+    border-radius: 25px;
+    background: #ddd;
+    text-indent: 1em;
+    height: 2em;
+    width: 20em;
+    font-size: .8em;
+}
+
+div.home {
+    background: url(../assets/bandeau.jpg) top center no-repeat;
+    background-size: 100% auto;
+    font-size: 1.5em;
+    padding: 3em 5em 5em 10em; 
+    color: #ddd;
+}
+
+section,
+div.fish {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0;
+}
+div.fish {
+    padding-top: 3em;
+}
+section.gallery {
+    padding: 5em;
+    padding-top: 1em;
+}
+section.gallery h2 {
+    width: 100%;
+    color: #333;
+}
+img,
+figure.home,
+header input,
+header
+{
+    box-shadow: 0px 0px 3px 0px rgba(119, 119, 119, 0.73);
+    -webkit-box-shadow: 0px 0px 3px 0px rgba(119, 119, 119, 0.73);
+}
+.img p {
+    margin: 0;
+    text-align: center;
+}
+figure {
+    padding: 1em;
+    margin: 0;
+}
+figure figcaption,
+figure figcaption a:link,
+figure figcaption a:visited {
+    margin: 0;
+    text-align: center;
+    font-weight: lighter;
+    color: #71767a;
+    font-size: 1em;
+}
+figure h3 {
+    margin: 0;
+    text-align: center;
+    font-weight: lighter;
+    font-size: 1em;
+    color: #aaa;
+    font-style: italic;
+}
+</style>
+            <script>window.dataLayer = window.dataLayer || []
+function gtag(){dataLayer.push(arguments)}
+gtag('js', new Date())
+gtag('config', 'UA-108901544-1')
+
+window.addEventListener('DOMContentLoaded', () => {
+    window.onsubmit = event => {
+        event.preventDefault()
+        const query = document.querySelector('input').value
+        document.location.href = `/galleries/#${slugify(query)}`
+    }
+})
+
+const slugify = text => {
+    const a = 'àáäâèéëêìíïîòóöôùúüûñçßÿœæŕśńṕẃǵǹḿǘẍźḧ·/_,:;'
+    const b = 'aaaaeeeeiiiioooouuuuncsyoarsnpwgnmuxzh------'
+    const p = new RegExp(a.split('').join('|'), 'g')
+
+    return text.toString().toLowerCase()
+        .replace(/\s+/g, '-') // Replace spaces with -
+        .replace(p, c =>
+            b.charAt(a.indexOf(c))) // Replace special chars
+        .replace(/&/g, '-and-') // Replace & with 'and'
+        .replace(/[^\w-]+/g, '') // Remove all non-word chars
+        .replace(/--+/g, '-') // Replace multiple - with single -
+        .replace(/^-+/, '') // Trim - from start of text
+        .replace(/-+$/, '') // Trim - from end of text
+}
+</script>
+            <script src=/node_modules/photoswipe/dist/photoswipe.min.js></script>
+<script src=/node_modules/photoswipe/dist/photoswipe-ui-default.min.js></script>
+
+<script src=/assets/photoswipe.js></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', evt => {
+        photoSwipe.init()  
+    })
+</script>
+
+<link rel=stylesheet href=/node_modules/photoswipe/dist/photoswipe.css>
+<link rel=stylesheet href=/node_modules/photoswipe/dist/default-skin/default-skin.css>
+
+            <header>
+    <h1><a href="/">OliFish</a></h1>
+    <form action=/ method=get>
+        <input type=text placeholder=Recherche>
+    </form>
+    <a href=mailto:contact@olifish.com class=contact>@contact</a>
+</header>
+            <div class=body>
+    <div class=fish><figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Canthigaster des caraibes - <em>Canthigaster rostrata</em>" itemprop=contentUrl data-size="2400x1600" href="https://www.olifish.com/img/img-6.jpg">
+    <img itemprop="thumbnail" alt="Canthigaster des caraibes - Canthigaster rostrata" data-id="0" src="https://www.olifish.com/light-thumbs/thumb-6.jpg" style="width: 300px; height: 200px;" title="Canon EOS 6D">
+    </a>
+    <figcaption itemprop="caption description">Canthigaster rostrata</figcaption>   
+    <h3>Canthigaster des caraibes</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Demoiselle bleue - <em>Abudefduf luridus</em>" itemprop=contentUrl data-size="2400x1600" href="https://www.olifish.com/img/img-12.jpg">
+    <img itemprop="thumbnail" alt="Demoiselle bleue - Abudefduf luridus" data-id="1" src="https://www.olifish.com/light-thumbs/thumb-12.jpg" style="width: 300px; height: 200px;" title="Canon EOS 6D">
+    </a>
+    <figcaption itemprop="caption description">Abudefduf luridus</figcaption>   
+    <h3>Demoiselle bleue</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Doris cantabrique - <em>Felimare cantabrica</em>" itemprop=contentUrl data-size="2400x1600" href="https://www.olifish.com/img/img-19.jpg">
+    <img itemprop="thumbnail" alt="Doris cantabrique - Felimare cantabrica" data-id="2" src="https://www.olifish.com/light-thumbs/thumb-19.jpg" style="width: 300px; height: 200px;" title="Canon EOS 600D">
+    </a>
+    <figcaption itemprop="caption description">Felimare cantabrica</figcaption>   
+    <h3>Doris cantabrique</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Flabelline mauve - <em>Flabellina affinis</em>" itemprop=contentUrl data-size="2400x1600" href="https://www.olifish.com/img/img-3.jpg">
+    <img itemprop="thumbnail" alt="Flabelline mauve - Flabellina affinis" data-id="3" src="https://www.olifish.com/light-thumbs/thumb-3.jpg" style="width: 300px; height: 200px;" title="Canon EOS 6D">
+    </a>
+    <figcaption itemprop="caption description">Flabellina affinis</figcaption>   
+    <h3>Flabelline mauve</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Hippocampe - <em>Hippocampus sp</em>" itemprop=contentUrl data-size="2400x1600" href="https://www.olifish.com/img/img-20.jpg">
+    <img itemprop="thumbnail" alt="Hippocampe - Hippocampus sp" data-id="4" src="https://www.olifish.com/light-thumbs/thumb-20.jpg" style="width: 300px; height: 200px;" title="Canon EOS 600D">
+    </a>
+    <figcaption itemprop="caption description">Hippocampus sp</figcaption>   
+    <h3>Hippocampe</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Museo atlantico Lanzarote - <em>artiste Jason de Caires Taylor</em>" itemprop=contentUrl data-size="2400x1600" href="https://www.olifish.com/img/img-22.jpg">
+    <img itemprop="thumbnail" alt="Museo atlantico Lanzarote - artiste Jason de Caires Taylor" data-id="5" src="https://www.olifish.com/light-thumbs/thumb-22.jpg" style="width: 300px; height: 200px;" title="Canon EOS 600D">
+    </a>
+    <figcaption itemprop="caption description">artiste Jason de Caires Taylor</figcaption>   
+    <h3>Museo atlantico Lanzarote</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Museo atlantico Lanzarote - <em>artiste Jason de Caires Taylor</em>" itemprop=contentUrl data-size="2400x1600" href="https://www.olifish.com/img/img-23.jpg">
+    <img itemprop="thumbnail" alt="Museo atlantico Lanzarote - artiste Jason de Caires Taylor" data-id="6" src="https://www.olifish.com/light-thumbs/thumb-23.jpg" style="width: 300px; height: 200px;" title="Canon EOS 600D">
+    </a>
+    <figcaption itemprop="caption description">artiste Jason de Caires Taylor</figcaption>   
+    <h3>Museo atlantico Lanzarote</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Museo atlantico Lanzarote - <em>artiste Jason de Caires Taylor</em>" itemprop=contentUrl data-size="2400x1600" href="https://www.olifish.com/img/img-25.jpg">
+    <img itemprop="thumbnail" alt="Museo atlantico Lanzarote - artiste Jason de Caires Taylor" data-id="7" src="https://www.olifish.com/light-thumbs/thumb-25.jpg" style="width: 300px; height: 200px;" title="Canon EOS 600D">
+    </a>
+    <figcaption itemprop="caption description">artiste Jason de Caires Taylor</figcaption>   
+    <h3>Museo atlantico Lanzarote</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Museo atlantico Lanzarote - <em>artiste Jason de Caires Taylor</em>" itemprop=contentUrl data-size="2400x1600" href="https://www.olifish.com/img/img-26.jpg">
+    <img itemprop="thumbnail" alt="Museo atlantico Lanzarote - artiste Jason de Caires Taylor" data-id="8" src="https://www.olifish.com/light-thumbs/thumb-26.jpg" style="width: 300px; height: 200px;" title="Canon EOS 600D">
+    </a>
+    <figcaption itemprop="caption description">artiste Jason de Caires Taylor</figcaption>   
+    <h3>Museo atlantico Lanzarote</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Museo atlantico Lanzarote - <em>artiste Jason de Caires Taylor</em>" itemprop=contentUrl data-size="1060x1600" href="https://www.olifish.com/img/img-21.jpg">
+    <img itemprop="thumbnail" alt="Museo atlantico Lanzarote - artiste Jason de Caires Taylor" data-id="9" src="https://www.olifish.com/light-thumbs/thumb-21.jpg" style="width: 133px; height: 200px;" title="Canon EOS 600D">
+    </a>
+    <figcaption itemprop="caption description">artiste Jason de Caires Taylor</figcaption>   
+    <h3>Museo atlantico Lanzarote</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Museo atlantico Lanzarote - <em>artiste Jason de Caires Taylor</em>" itemprop=contentUrl data-size="1060x1600" href="https://www.olifish.com/img/img-27.jpg">
+    <img itemprop="thumbnail" alt="Museo atlantico Lanzarote - artiste Jason de Caires Taylor" data-id="10" src="https://www.olifish.com/light-thumbs/thumb-27.jpg" style="width: 133px; height: 200px;" title="Canon EOS 600D">
+    </a>
+    <figcaption itemprop="caption description">artiste Jason de Caires Taylor</figcaption>   
+    <h3>Museo atlantico Lanzarote</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Museo atlantico Lanzarote - <em>artiste Jason de Caires Taylor</em>" itemprop=contentUrl data-size="2400x1600" href="https://www.olifish.com/img/img-24.jpg">
+    <img itemprop="thumbnail" alt="Museo atlantico Lanzarote - artiste Jason de Caires Taylor" data-id="11" src="https://www.olifish.com/light-thumbs/thumb-24.jpg" style="width: 300px; height: 200px;" title="Canon EOS 600D">
+    </a>
+    <figcaption itemprop="caption description">artiste Jason de Caires Taylor</figcaption>   
+    <h3>Museo atlantico Lanzarote</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Mérou brun - <em>Epinephelus marginatus</em>" itemprop=contentUrl data-size="2400x1600" href="https://www.olifish.com/img/img-13.jpg">
+    <img itemprop="thumbnail" alt="Mérou brun - Epinephelus marginatus" data-id="12" src="https://www.olifish.com/light-thumbs/thumb-13.jpg" style="width: 300px; height: 200px;" title="Canon EOS 6D">
+    </a>
+    <figcaption itemprop="caption description">Epinephelus marginatus</figcaption>   
+    <h3>Mérou brun</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Mérou brun - <em>Epinephelus marginatus</em>" itemprop=contentUrl data-size="2400x1600" href="https://www.olifish.com/img/img-14.jpg">
+    <img itemprop="thumbnail" alt="Mérou brun - Epinephelus marginatus" data-id="13" src="https://www.olifish.com/light-thumbs/thumb-14.jpg" style="width: 300px; height: 200px;" title="Canon EOS 6D">
+    </a>
+    <figcaption itemprop="caption description">Epinephelus marginatus</figcaption>   
+    <h3>Mérou brun</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Mérou brun - <em>Epinephelus marginatus</em>" itemprop=contentUrl data-size="2400x1600" href="https://www.olifish.com/img/img-15.jpg">
+    <img itemprop="thumbnail" alt="Mérou brun - Epinephelus marginatus" data-id="14" src="https://www.olifish.com/light-thumbs/thumb-15.jpg" style="width: 300px; height: 200px;" title="Canon EOS 6D">
+    </a>
+    <figcaption itemprop="caption description">Epinephelus marginatus</figcaption>   
+    <h3>Mérou brun</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Rascasse de Madère - <em>Scorpaena maderensis</em>" itemprop=contentUrl data-size="2400x1600" href="https://www.olifish.com/img/img-5.jpg">
+    <img itemprop="thumbnail" alt="Rascasse de Madère - Scorpaena maderensis" data-id="15" src="https://www.olifish.com/light-thumbs/thumb-5.jpg" style="width: 300px; height: 200px;" title="Canon EOS 6D">
+    </a>
+    <figcaption itemprop="caption description">Scorpaena maderensis</figcaption>   
+    <h3>Rascasse de Madère</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Requin ange - <em>Squatina squatina</em>" itemprop=contentUrl data-size="1060x1600" href="https://www.olifish.com/img/img-17.jpg">
+    <img itemprop="thumbnail" alt="Requin ange - Squatina squatina" data-id="16" src="https://www.olifish.com/light-thumbs/thumb-17.jpg" style="width: 134px; height: 200px;" title="Canon EOS 600D">
+    </a>
+    <figcaption itemprop="caption description">Squatina squatina</figcaption>   
+    <h3>Requin ange</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Requin ange - <em>Squatina squatina</em>" itemprop=contentUrl data-size="2400x1600" href="https://www.olifish.com/img/img-16.jpg">
+    <img itemprop="thumbnail" alt="Requin ange - Squatina squatina" data-id="17" src="https://www.olifish.com/light-thumbs/thumb-16.jpg" style="width: 300px; height: 200px;" title="Canon EOS 600D">
+    </a>
+    <figcaption itemprop="caption description">Squatina squatina</figcaption>   
+    <h3>Requin ange</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Sargue - <em>Diplodus sargus</em>" itemprop=contentUrl data-size="2400x1600" href="https://www.olifish.com/img/img-10.jpg">
+    <img itemprop="thumbnail" alt="Sargue - Diplodus sargus" data-id="18" src="https://www.olifish.com/light-thumbs/thumb-10.jpg" style="width: 300px; height: 200px;" title="Canon EOS 6D">
+    </a>
+    <figcaption itemprop="caption description">Diplodus sargus</figcaption>   
+    <h3>Sargue</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Sargue - <em>Diplodus sargus</em>" itemprop=contentUrl data-size="2400x1600" href="https://www.olifish.com/img/img-1.jpg">
+    <img itemprop="thumbnail" alt="Sargue - Diplodus sargus" data-id="19" src="https://www.olifish.com/light-thumbs/thumb-1.jpg" style="width: 300px; height: 200px;" title="Canon EOS 6D">
+    </a>
+    <figcaption itemprop="caption description">Diplodus sargus</figcaption>   
+    <h3>Sargue</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Sargue - <em>Diplodus sargus</em>" itemprop=contentUrl data-size="2400x1600" href="https://www.olifish.com/img/img-11.jpg">
+    <img itemprop="thumbnail" alt="Sargue - Diplodus sargus" data-id="20" src="https://www.olifish.com/light-thumbs/thumb-11.jpg" style="width: 300px; height: 200px;" title="Canon EOS 6D">
+    </a>
+    <figcaption itemprop="caption description">Diplodus sargus</figcaption>   
+    <h3>Sargue</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Seiche - <em>Sepia officinalis</em>" itemprop=contentUrl data-size="2400x1600" href="https://www.olifish.com/img/img-9.jpg">
+    <img itemprop="thumbnail" alt="Seiche - Sepia officinalis" data-id="21" src="https://www.olifish.com/light-thumbs/thumb-9.jpg" style="width: 300px; height: 200px;" title="Canon EOS 6D">
+    </a>
+    <figcaption itemprop="caption description">Sepia officinalis</figcaption>   
+    <h3>Seiche</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Seiche - <em>Sepia officinalis</em>" itemprop=contentUrl data-size="2400x1600" href="https://www.olifish.com/img/img-8.jpg">
+    <img itemprop="thumbnail" alt="Seiche - Sepia officinalis" data-id="22" src="https://www.olifish.com/light-thumbs/thumb-8.jpg" style="width: 300px; height: 200px;" title="Canon EOS 6D">
+    </a>
+    <figcaption itemprop="caption description">Sepia officinalis</figcaption>   
+    <h3>Seiche</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Sole rombou - <em>Bothus podas</em>" itemprop=contentUrl data-size="2400x1600" href="https://www.olifish.com/img/img-7.jpg">
+    <img itemprop="thumbnail" alt="Sole rombou - Bothus podas" data-id="23" src="https://www.olifish.com/light-thumbs/thumb-7.jpg" style="width: 300px; height: 200px;" title="Canon EOS 6D">
+    </a>
+    <figcaption itemprop="caption description">Bothus podas</figcaption>   
+    <h3>Sole rombou</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Ver de feu - <em>Hermodice carunculata</em>" itemprop=contentUrl data-size="1060x1600" href="https://www.olifish.com/img/img-4.jpg">
+    <img itemprop="thumbnail" alt="Ver de feu - Hermodice carunculata" data-id="24" src="https://www.olifish.com/light-thumbs/thumb-4.jpg" style="width: 133px; height: 200px;" title="Canon EOS 6D">
+    </a>
+    <figcaption itemprop="caption description">Hermodice carunculata</figcaption>   
+    <h3>Ver de feu</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Ver myxicole - <em>Myxicola infundibulum</em>" itemprop=contentUrl data-size="2400x1600" href="https://www.olifish.com/img/img-18.jpg">
+    <img itemprop="thumbnail" alt="Ver myxicole - Myxicola infundibulum" data-id="25" src="https://www.olifish.com/light-thumbs/thumb-18.jpg" style="width: 300px; height: 200px;" title="Canon EOS 600D">
+    </a>
+    <figcaption itemprop="caption description">Myxicola infundibulum</figcaption>   
+    <h3>Ver myxicole</h3>
+</figure>
+
+</div>
+
+<div class=pswp tabindex=-1 role=dialog aria-hidden=true>
+    <div class=pswp__bg></div>
+    <div class=pswp__scroll-wrap>
+        <div class=pswp__container>
+            <div class=pswp__item></div>
+            <div class=pswp__item></div>
+            <div class=pswp__item></div>
+        </div>
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </html>
+        
