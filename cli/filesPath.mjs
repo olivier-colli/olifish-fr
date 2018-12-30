@@ -4,9 +4,8 @@ const tplDir = './cli/template'
 const photosRepoUrl = new URL('https://www.olifish.com')
 
 export default {
+    photosRepoUrl: photosRepoUrl,
     dbUrl: new URL('data.json', photosRepoUrl),
-    imgsUrl: new URL('img/', photosRepoUrl),
-    thumbsUrl: new URL('light-thumbs/', photosRepoUrl),
     configGalleries: 'galleries.yaml',
     tplHead: path.join(tplDir, 'tpl-head.html'),
     tplCss: path.join(tplDir, 'tpl-style.css'),

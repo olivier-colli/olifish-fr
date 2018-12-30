@@ -46,18 +46,18 @@ readIndexFiles.then(promisesResult => {
 
 function composeGallery(galleryMetas, photosMetas, file) {
     let htmlGallery = '<div class=fish>'
+    let counter = 0
     for (const meta of photosMetas) {
-        let counter = 0
         let metas = {   
             fishname: meta.Fr,
             fishnameLatin: meta.Lat,
             imgSize: meta.targetImageSize,
-            imgUrl: new URL(meta.fileName.img, fp.imgsUrl.href),
+            imgUrl: new URL(meta.fileName.img, fp.photosRepoUrl.href),
             Id: counter++,
-            thumbUrl: new URL(meta.fileName.thumbnail, fp.thumbsUrl.href),
+            thumbUrl: new URL(meta.fileName.thumbnail, fp.photosRepoUrl.href),
             thumbWidth: meta.imageSize.split('x')[0]+'px',
             thumbHeight: meta.imageSize.split('x')[1]+'px',
-            title: meta.title
+            title: meta.title,
         }
         htmlGallery += nano(file.get('thumb'), metas)
     }
