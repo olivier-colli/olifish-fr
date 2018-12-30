@@ -12,5 +12,6 @@ export default {
     tplHeader: path.join(tplDir, 'tpl-header.html'),
     tplIndex: path.join(tplDir, 'tpl-index.html'),
     tplGallery: path.join(tplDir, 'tpl-gallery.html'),
-    tplGalleries: path.join(tplDir, 'tpl-galleries.html')
+    tplGalleries: path.join(tplDir, 'tpl-galleries.html'),
+    tplThumb: path.join(tplDir, 'tpl-thumb.html')
 }

@@ -9,6 +9,7 @@ import yaml from 'js-yaml'
 import db from './db.mjs'
 import {slugify, keysValueArraysToMap} from './utils.mjs'
 import fp from './filesPath.mjs'
+import nano from './nano.mjs'
 
 const readFile = promisify(fs.readFile)
 
@@ -21,31 +22,40 @@ const readIndexFiles = Promise.all([
     readFile(fp.tplPhotoswipe, 'utf-8').then(photoswipe => (['photoswipe', photoswipe])),
     readFile(fp.tplHeader, 'utf-8').then(header => (['header', header])),
     readFile(fp.tplGallery, 'utf-8').then(body => (['body', body])),
+    readFile(fp.tplThumb, 'utf-8').then(thumb => (['thumb', thumb])),
 ])
 
 readIndexFiles.then(promisesResult => {
     const file = keysValueArraysToMap(promisesResult)
     file.get('configGalleries').map(galleryMeta => {
         const photos = db.findAll( file.get('db'), galleryMeta.title)
-        const gallery = composeGallery(galleryMeta, photos)
+        const gallery = composeGallery(galleryMeta, photos, file.get('thumb'))
         writeGallery(`galleries/${slugify(galleryMeta.title)}.html`, gallery)
     })
 })
 
-function composeGallery(meta, photos) {
-    let htmlGallery = '<div class="fish">'
-    htmlGallery += JSON.stringify(photos)
+function composeGallery(meta, photos, tplThumb) {
+    let htmlGallery = `<h1>${meta.title}</h1><div class="fish">`
+    for (const photo of photos) {
+        let metas = {   
+            fr: '',
+            lat: '',
+            targetImageSize: '',
+            fileNameImg: '',
+            index: '',
+            fileNameThumbnail: '',
+            imgWidth: '',
+            imgHeight: '',
+            title: 'Poision',
+            fishnameFr: 'Mérou',
+            fishnameLat: '' 
+        }
+        htmlGallery += nano(tplThumb, metas)
+    }
     return htmlGallery
 }
 
 /*
-configGalleries.map(galleryData => {
-    let htmlGallery = '<div class="fish">'
-    htmlGallery += JSON.parse(data)
-        .filter(metas =>
-            slugify(JSON.stringify(metas)).indexOf(slugify(galleryData.title)) !== -1
-        )
-        .sort((a, b) => (a.Fr > b.Fr) ? 1 : ((b.Fr > a.Fr) ? -1 : 0) )
         .map((metas, index) => {
             const img = {}
             const fishname = {}
@@ -85,24 +95,24 @@ configGalleries.map(galleryData => {
 */
 
 function writeGallery(name, content) {
-  fs.writeFile(name, content, 'utf8', err => {
-    if (err) throw err
-  })
+    fs.writeFile(name, content, 'utf8', err => {
+        if (err) throw err
+    })
 }
 
 function composeGalleries(config) {
-  return config.map(galleryData => composePhoto(galleryData)).join('')
+    return config.map(galleryData => composePhoto(galleryData)).join('')
 }
 
 function composePhoto(data) {
-  const {title, description, img} = data
-  return `
-      <figure class="img">
+    const {title, description, img} = data
+    return `
+        <figure class="img">
         <a href="/galleries/${slugify(title)}.html" class="gallery">
-          <img src="./light-thumbs/thumb-${img}.jpg" alt="${title}">
+            <img src="./light-thumbs/thumb-${img}.jpg" alt="${title}">
         </a>
         <figcaption itemprop="caption description">${description}</figcaption>
         <h3>${title}</h3>
-      </figure>
-  `
+        </figure>
+    `
 }
