@@ -1,5 +1,5 @@
 /*
-  Extract data from config.js and with index-tpl.html compose a static index.html
+  Extract data from config.js and with *-tpl.html compose static index.html
   The script return the pageName to Bash
 */
 
@@ -30,13 +30,14 @@ readIndexFiles.then(promisesResult => {
     file.get('configGalleries').map(galleryMeta => {
         const photosMetas = db.findAll( file.get('db'), galleryMeta.title)
         const gallery = composeGallery(galleryMeta, photosMetas, file)
+        const body = nano(file.get('body'), {gallery: gallery})
         const galleryPage = `
             ${file.get('head')}
             <style>${file.get('css')}</style>
             <script>${file.get('js')}</script>
             ${file.get('photoswipe')}
             ${file.get('header')}
-            ${gallery}
+            ${body}
         </html>
         `
         writeGallery(`galleries/${slugify(galleryMeta.title)}.html`, galleryPage)
@@ -44,7 +45,7 @@ readIndexFiles.then(promisesResult => {
 })
 
 function composeGallery(galleryMetas, photosMetas, file) {
-    let htmlGallery = `<h1>${galleryMetas.title}</h1><div class='fish'>`
+    let htmlGallery = '<div class=fish>'
     for (const meta of photosMetas) {
         let counter = 0
         let metas = {   
@@ -54,8 +55,8 @@ function composeGallery(galleryMetas, photosMetas, file) {
             imgUrl: new URL(meta.fileName.img, fp.imgsUrl.href),
             Id: counter++,
             thumbUrl: new URL(meta.fileName.thumbnail, fp.thumbsUrl.href),
-            thumbWidth: meta.imageSize.split('x')[0],
-            thumbHeight: meta.imageSize.split('x')[1],
+            thumbWidth: meta.imageSize.split('x')[0]+'px',
+            thumbHeight: meta.imageSize.split('x')[1]+'px',
             title: meta.title
         }
         htmlGallery += nano(file.get('thumb'), metas)
