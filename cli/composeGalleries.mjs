@@ -28,33 +28,54 @@ const readIndexFiles = Promise.all([
 readIndexFiles.then(promisesResult => {
     const file = keysValueArraysToMap(promisesResult)
     file.get('configGalleries').map(galleryMeta => {
-        const photos = db.findAll( file.get('db'), galleryMeta.title)
-        const gallery = composeGallery(galleryMeta, photos, file.get('thumb'))
-        writeGallery(`galleries/${slugify(galleryMeta.title)}.html`, gallery)
+        const photosMetas = db.findAll( file.get('db'), galleryMeta.title)
+        const gallery = composeGallery(galleryMeta, photosMetas, file)
+        const galleryPage = `
+            ${file.get('head')}
+            <style>${file.get('css')}</style>
+            <script>${file.get('js')}</script>
+            ${file.get('photoswipe')}
+            ${file.get('header')}
+            ${gallery}
+        </html>
+        `
+        writeGallery(`galleries/${slugify(galleryMeta.title)}.html`, galleryPage)
     })
 })
 
-function composeGallery(meta, photos, tplThumb) {
-    let htmlGallery = `<h1>${meta.title}</h1><div class="fish">`
-    for (const photo of photos) {
+function composeGallery(galleryMetas, photosMetas, file) {
+    let htmlGallery = `<h1>${galleryMetas.title}</h1><div class='fish'>`
+    for (const meta of photosMetas) {
+        let counter = 0
         let metas = {   
-            fr: '',
-            lat: '',
-            targetImageSize: '',
-            fileNameImg: '',
-            index: '',
-            fileNameThumbnail: '',
-            imgWidth: '',
-            imgHeight: '',
-            title: 'Poision',
-            fishnameFr: photo.keywords.Fr,
-            fishnameLat: '' 
+            fishname: meta.Fr,
+            fishnameLatin: meta.Lat,
+            imgSize: meta.targetImageSize,
+            imgUrl: new URL(meta.fileName.img, fp.imgsUrl.href),
+            Id: counter++,
+            thumbUrl: new URL(meta.fileName.thumbnail, fp.thumbsUrl.href),
+            thumbWidth: meta.imageSize.split('x')[0],
+            thumbHeight: meta.imageSize.split('x')[1],
+            title: meta.title
         }
-        htmlGallery += nano(tplThumb, metas)
+        htmlGallery += nano(file.get('thumb'), metas)
     }
     return htmlGallery
 }
 
+/*
+{
+    keywords:['Nom allemand','Nom anglais','nom francais','nom latin'],
+    De:'Partnergarnele'
+    Eng:'Anemone shrimp'
+    Fr: 'Crevette commensale'
+    Lat':'Ancylomenes Sarasvati',
+    fileName: {'thumbnail':'/light-thumbs/thumb-734.jpg','img':'/img/img-734.jpg'}
+    dateCreated: "2010-01-01T00:00:00.000Z",
+    imageSiz":"300x200",
+    targetImageSize:"2400x1600",
+    location:"egypte-coral-garden-nov-2017",
+    title:"Canon EOS 6D"
 /*
         .map((metas, index) => {
             const img = {}
@@ -64,7 +85,7 @@ function composeGallery(meta, photos, tplThumb) {
             function fishnametoAnchor(fishname) {
             try {
                 return fishname.split(' ')
-                .map(word => `<a href="/galleries/#${slugify(word)}">${word}</a>`)
+                .map(word => `<a href='/galleries/#${slugify(word)}'>${word}</a>`)
                 .join(' ')
             } catch (err) {
                 return '-'
@@ -77,11 +98,11 @@ function composeGallery(meta, photos, tplThumb) {
             line-height: 2.5em;zetoAnchor(metas.Fr)
             fishname.lat = fishnametoAnchor(metas.Lat)
             return `
-                <figure class="img" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject">
-                <a data-caption="${metas.Fr} - <i>${metas.Lat}</i>" itemprop="contentUrl" data-size="${metas.targetImageSize}" href="${metas.fileName.img}">
-                <img itemprop="thumbnail" alt="${metas.Fr} - ${metas.Lat}" data-id="${index}" src="${metas.fileName.thumbnail}" style="width: ${img.width}; height: ${img.height};" title="${metas.title}">
+                <figure class='img' itemprop='associatedMedia' itemscope='' itemtype='http://schema.org/ImageObject'>
+                <a data-caption='${metas.Fr} - <i>${metas.Lat}</i>' itemprop='contentUrl' data-size='${metas.targetImageSize}' href='${metas.fileName.img}'>
+                <img itemprop='thumbnail' alt='${metas.Fr} - ${metas.Lat}' data-id='${index}' src='${metas.fileName.thumbnail}' style='width: ${img.width}; height: ${img.height};' title='${metas.title}'>
                 </a>
-                <figcaption itemprop="caption description">${fishname.fr}</figcaption>   
+                <figcaption itemprop='caption description'>${fishname.fr}</figcaption>   
                 <h3>${fishname.lat}</h3>
                 </figure>
             `
@@ -107,11 +128,11 @@ function composeGalleries(config) {
 function composePhoto(data) {
     const {title, description, img} = data
     return `
-        <figure class="img">
-        <a href="/galleries/${slugify(title)}.html" class="gallery">
-            <img src="./light-thumbs/thumb-${img}.jpg" alt="${title}">
+        <figure class='img'>
+        <a href='/galleries/${slugify(title)}.html' class='gallery'>
+            <img src='./light-thumbs/thumb-${img}.jpg' alt='${title}'>
         </a>
-        <figcaption itemprop="caption description">${description}</figcaption>
+        <figcaption itemprop='caption description'>${description}</figcaption>
         <h3>${title}</h3>
         </figure>
     `
