@@ -9,19 +9,19 @@ import fs from 'fs'
 import {promisify} from 'util'
 import yaml from 'js-yaml'
 import {slugify, keysValueArraysToMap} from './utils.mjs'
-import fp from './filesPath.mjs'
+import path_ from './path.mjs'
 import nano from './nano.mjs'
 
 const readFile = promisify(fs.readFile)
 
 const readIndexFiles = Promise.all([
-    readFile(fp.configGalleries, 'utf-8').then(configGalleries => (['configGalleries', yaml.load(configGalleries)])),
-    readFile(fp.tplHead, 'utf-8').then(head => (['head', head])),
-    readFile(fp.tplCss, 'utf-8').then(css => (['css', css])),
-    readFile(fp.tplJS, 'utf-8').then(js => (['js', js])),
-    readFile(fp.tplHeader, 'utf-8').then(header => (['header', header])),
-    readFile(fp.tplIndex, 'utf-8').then(body => (['body', body])),
-    readFile(fp.tplGalleries, 'utf-8').then(galleries => (['galleries', galleries]))
+    readFile(path_.configGalleries, 'utf-8').then(configGalleries => (['configGalleries', yaml.load(configGalleries)])),
+    readFile(path_.tplHead, 'utf-8').then(head => (['head', head])),
+    readFile(path_.tplCss, 'utf-8').then(css => (['css', css])),
+    readFile(path_.tplJS, 'utf-8').then(js => (['js', js])),
+    readFile(path_.tplHeader, 'utf-8').then(header => (['header', header])),
+    readFile(path_.tplIndex, 'utf-8').then(body => (['body', body])),
+    readFile(path_.tplGalleries, 'utf-8').then(galleries => (['galleries', galleries]))
 ])
 
 readIndexFiles.then(promisesResult => {

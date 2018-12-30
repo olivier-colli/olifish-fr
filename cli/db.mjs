@@ -1,6 +1,6 @@
 import axios from 'axios'
 import {slugify} from './utils.mjs'
-import path_ from './filesPath.mjs'
+import path_ from './path.mjs'
 
 export default {
     load: () => axios.get(path_.dbUrl.href),

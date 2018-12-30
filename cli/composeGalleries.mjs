@@ -8,21 +8,21 @@ import {promisify} from 'util'
 import yaml from 'js-yaml'
 import db from './db.mjs'
 import {slugify, keysValueArraysToMap} from './utils.mjs'
-import fp from './filesPath.mjs'
+import path_ from './path.mjs'
 import nano from './nano.mjs'
 
 const readFile = promisify(fs.readFile)
 
 const readIndexFiles = Promise.all([
     db.load().then(db => ['db', db.data]),
-    readFile(fp.configGalleries, 'utf-8').then(configGalleries => (['configGalleries', yaml.load(configGalleries)])),
-    readFile(fp.tplHead, 'utf-8').then(head => (['head', head])),
-    readFile(fp.tplCss, 'utf-8').then(css => (['css', css])),
-    readFile(fp.tplJS, 'utf-8').then(js => (['js', js])),
-    readFile(fp.tplPhotoswipe, 'utf-8').then(photoswipe => (['photoswipe', photoswipe])),
-    readFile(fp.tplHeader, 'utf-8').then(header => (['header', header])),
-    readFile(fp.tplGallery, 'utf-8').then(body => (['body', body])),
-    readFile(fp.tplThumb, 'utf-8').then(thumb => (['thumb', thumb])),
+    readFile(path_.configGalleries, 'utf-8').then(configGalleries => (['configGalleries', yaml.load(configGalleries)])),
+    readFile(path_.tplHead, 'utf-8').then(head => (['head', head])),
+    readFile(path_.tplCss, 'utf-8').then(css => (['css', css])),
+    readFile(path_.tplJS, 'utf-8').then(js => (['js', js])),
+    readFile(path_.tplPhotoswipe, 'utf-8').then(photoswipe => (['photoswipe', photoswipe])),
+    readFile(path_.tplHeader, 'utf-8').then(header => (['header', header])),
+    readFile(path_.tplGallery, 'utf-8').then(body => (['body', body])),
+    readFile(path_.tplThumb, 'utf-8').then(thumb => (['thumb', thumb])),
 ])
 
 readIndexFiles.then(promisesResult => {
@@ -52,9 +52,9 @@ function composeGallery(galleryMetas, photosMetas, file) {
             fishname: meta.Fr,
             fishnameLatin: meta.Lat,
             imgSize: meta.targetImageSize,
-            imgUrl: new URL(meta.fileName.img, fp.photosRepoUrl.href),
+            imgUrl: new URL(meta.fileName.img, path_.photosRepoUrl.href),
             Id: counter++,
-            thumbUrl: new URL(meta.fileName.thumbnail, fp.photosRepoUrl.href),
+            thumbUrl: new URL(meta.fileName.thumbnail, path_.photosRepoUrl.href),
             thumbWidth: meta.imageSize.split('x')[0]+'px',
             thumbHeight: meta.imageSize.split('x')[1]+'px',
             title: meta.title,
