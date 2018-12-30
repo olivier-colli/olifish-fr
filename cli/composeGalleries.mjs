@@ -47,7 +47,7 @@ function composeGallery(meta, photos, tplThumb) {
             imgWidth: '',
             imgHeight: '',
             title: 'Poision',
-            fishnameFr: 'Mérou',
+            fishnameFr: photo.keywords.Fr,
             fishnameLat: '' 
         }
         htmlGallery += nano(tplThumb, metas)
