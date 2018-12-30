@@ -1,24 +1,19 @@
 {
   "name": "olifish-fr",
-  "version": "1.0.0",
-  "description": "Site d'Olivier Colli  photographe passionné par la plongée sous-marine.",
+  "version": "2.0.0",
+  "description": "Site d'Olivier Colli photographe passionné par la plongée sous-marine.",
+  "keywords": ["diving", "underwater", "photographies", "fish"],
   "main": "",
   "scripts": {
-    "lint": "eslint ./examples",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint ./examples"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/olivier-colli/olifish-fr.git"
   },
-  "keywords": [
-    "underwater photography",
-    "fish",
-    "galleries",
-    "photo"
-  ],
+  "keywords": ["underwater photography", "fish", "galleries", "photo"],
   "author": "Stéphane Langlois - pntbr - scopyleft",
-  "license": "cc0-1.0",
+  "license": "CC0-1.0",
   "bugs": {
     "url": "https://github.com/olivier-colli/olifish-fr/issues"
   },
