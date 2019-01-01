@@ -1,12 +1,13 @@
 import path from 'path'
 
 const tplDir = './cli/template'
-const photosRepoUrl = new URL('https://www.olifish.com')
+const photosRepoUrl = new URL('https://olivier-colli.github.io/olifish-fr')
+const DBUrl = new URL('https://olivier-colli.github.io/olifish-photos')
 
 export default {
     galleriesDir: './galeries',
     photosRepoUrl: photosRepoUrl,
-    dbUrl: new URL('data.json', photosRepoUrl),
+    dbUrl: new URL(`${DBUrl}/data.json`),
     configGalleries: 'galleries.yaml',
     tplHead: path.join(tplDir, 'tpl-head.html'),
     tplCss: path.join(tplDir, 'tpl-style.css'),
