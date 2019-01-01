@@ -34,7 +34,7 @@ readIndexFiles.then(promisesResult => {
         const body = nano(file.get('body'), {gallery: gallery})
         const galleryPage = `
             ${file.get('head')}
-            <style>${nano(file.get('css'), `${path_.siteUrl.href}/assets/bandeau.jpg`)}</style>
+            <style>${nano(file.get('css'), `${path_.siteUrl.href}/assets/background-image.jpg`)}</style>
             <script>${file.get('js')}</script>
             ${file.get('photoswipe')}
             ${file.get('header')}
