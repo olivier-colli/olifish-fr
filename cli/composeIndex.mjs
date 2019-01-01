@@ -53,7 +53,7 @@ function composeGallery(data, tpl) {
         title: data.title,
         description: data.description,
         img: data.img,
-        href: `/galleries/${slugify(data.title)}.html`,
+        href: `/galeries/${slugify(data.title)}.html`,
         src: `https://www.olifish.com/light-thumbs/thumb-${data.img}.jpg`
     }
     return nano(tpl, datas)
