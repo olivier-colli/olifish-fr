@@ -51,15 +51,14 @@ function composeGallery(galleryMetas, photosMetas, file) {
     let counter = 0
     for (const meta of photosMetas) {
         let metas = {   
-            fishname: meta.Fr,
-            fishnameLatin: meta.Lat,
-            imgSize: meta.targetImageSize,
-            imgUrl: new URL(meta.fileName.img, path_.photosRepoUrl.href),
+            fishname: meta.nameFr,
+            fishnameLatin: meta.nameLat,
+            imgSize: `${meta.imgSize.width}x${meta.imgSize.height}`,
+            imgUrl: new URL(meta.filepath.img, path_.photosRepoUrl.href),
             Id: counter++,
-            thumbUrl: new URL(meta.fileName.thumbnail, path_.photosRepoUrl.href),
-            thumbWidth: meta.imageSize.split('x')[0]+'px',
-            thumbHeight: meta.imageSize.split('x')[1]+'px',
-            title: meta.title,
+            thumbUrl: new URL(meta.filepath.thumb, path_.photosRepoUrl.href),
+            thumbSize: meta.thumbSize,
+            title: meta.location,
         }
         htmlGallery += nano(file.get('thumb'), metas)
     }
