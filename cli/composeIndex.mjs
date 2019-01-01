@@ -31,7 +31,7 @@ readIndexFiles.then(promisesResult => {
     const body = nano(file.get('body'), {galleries: htmlGalleries})
     const index = `
         ${file.get('head')}
-        <style>${file.get('css')}</style>
+        <style>${nano(file.get('css'), {'background-image': './assets/background-image.jpg'})}</style>
         <script>${file.get('js')}</script>
         ${file.get('header')}
         ${body}
