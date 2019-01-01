@@ -48,13 +48,13 @@ const writeHome = content =>
 const composeGalleries = (config, tpl) =>
     config.map(galleryData => composeGallery(galleryData, tpl)).join('')
 
-function composeGallery(data, tpl) {
+function composeGallery(meta, tpl) {
     const datas = {
-        title: data.title,
-        description: data.description,
-        img: data.img,
-        href: `/galeries/${slugify(data.title)}.html`,
-        src: `https://www.olifish.com/light-thumbs/thumb-${data.img}.jpg`
+        title: meta.title,
+        description: meta.description,
+        img: meta.img,
+        href: `./galeries/${slugify(meta.title)}.html`,
+        src: `${path_.photosRepoUrl}/thumb/thumb-${meta.img}.jpg`
     }
     return nano(tpl, datas)
 }
