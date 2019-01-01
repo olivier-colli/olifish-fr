@@ -1,7 +1,7 @@
 import path from 'path'
 
 const siteUrl = new URL('https://olivier-colli.github.io/olifish-fr')
-const photosRepoUrl = new URL('https://olivier-colli.github.io/olifish-photo')
+const photosRepoUrl = new URL('https://olivier-colli.github.io/olifish-photos')
 const DBUrl = new URL('https://olivier-colli.github.io/olifish-photos')
 const tplDir = './cli/template'
 
