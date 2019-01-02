@@ -7,5 +7,5 @@ export default {
     findAll: (db, query) => db
         .filter(metas =>
             slugify(JSON.stringify(metas)).indexOf(slugify(query)) !== -1)
-        .sort((a, b) => (a.Fr > b.Fr) ? 1 : ((b.Fr > a.Fr) ? -1 : 0) )
+        .sort((a, b) => (a.nameFr > b.nameFr) ? 1 : ((b.nameFr > a.nameFr) ? -1 : 0))
 }
