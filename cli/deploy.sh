@@ -17,4 +17,4 @@ npm run compose-galleries
 git add --force index.html $galleries
 git commit -m "add galleries and index"
 
-git push https://$token@github.com/olivier-colli/olifish-fr.git >/dev/null 2>&1
+git push https://$token@github.com/olivier-colli/olifish-fr.git
