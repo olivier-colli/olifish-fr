@@ -53,10 +53,10 @@ function composeGallery(galleryMetas, photosMetas, file) {
         let metas = {   
             fishname: meta.nameFr,
             fishnameLatin: meta.nameLat,
-            imgSize: `${meta.imgSize.width}x${meta.imgSize.height}`,
             imgUrl: `${path_.photosRepoUrl}/${meta.filepath.img}`,
             Id: counter++,
             thumbUrl: `${path_.photosRepoUrl}/${meta.filepath.thumb}`,
+            imgSize: `${meta.imgSize.width}x${meta.imgSize.height}`,
             thumbSizeWidth: meta.thumbSize.width,
             thumbSizeHeight: meta.thumbSize.height,
             title: meta.location,

@@ -13,6 +13,7 @@ export default {
     configGalleries: 'galleries.yaml',
     tplHead: path.join(tplDir, 'tpl-head.html'),
     tplCss: path.join(tplDir, 'tpl-style.css'),
+    tplIndexCss: path.join(tplDir, 'tpl-index.css'),
     tplJS: path.join(tplDir, 'tpl-script.js'),
     tplPhotoswipe: path.join(tplDir, 'tpl-photoswipe.html'),
     tplHeader: path.join(tplDir, 'tpl-header.html'),
