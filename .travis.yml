@@ -1,13 +1,7 @@
 language: node_js
 node_js: '10'
 sudo: required
-deploy:
-  provider: pages
-  script: "./cli/deploy.sh"
-  skip-cleanup: true
-  keep-history: true
-  on:
-    branch: add-travis
+script: ./cli/deploy.sh
 env:
   global:
     secure: SssJTYQaG/i980UjWVPdynTiE3XxJr/2QNQ8p5ATKfxr0pxPfUwthGlj3aZfNzOwB0thwll1TfxICSj7AIWWIrk89Bwnk6Ds31e7vgJoW89ds23pohlpX7wbH3INLw5PLl88wYjD2BS97XvbIx8vj4FCdrWWZphebkDinYrdwModqphPGGY3CZ12u4+hE5iceHU6/8m0VqOlUTKp0rXrl1eQnXg9V9oo0a0PPeyJaiGiRJQK7GFTRG91YF+8r6sTDHeRvQIatKB2yS/iVs2uvugqD6PZjFSivgQoYVAb1TqIbtFFohVtKiDE14TOxAEVaq8ai/hmrdx2X29nRy2arJjqjgcJr985ajw0r+iMU19v2jXs9qOClCQ6n2KGt1y7qP3cTeWUtinoqKJvrx1M54CgzKR6eFQXBMeN8N9oqNtq8y3GwyuPhyEHZSsAwNcR+Jo9Ibh9xzoaR2TPpKYhrD9pBpAZf24z79vXLOsCtO1DBLGpCJnkdMr+qtpxSAsXYr+lJzM4r9uQERHWT1kGBfs9qiS+4VXpTIHeBwvYQf/0t3m4eteH6/55vCIiGUBDnWBALdc7Pr5eaahRmHlbyAm3OTPbeOdffLZ2daAYGiwy0BLBr8bGU4Fo/uL4ya+PtUKfhWdCHT8n9ZW5i/Hw7WSzVY/yuAnTg4qzJacXTt0=
