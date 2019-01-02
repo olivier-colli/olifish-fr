@@ -9,6 +9,8 @@ galleries='./galeries'
 rm -Rf $galleries
 mkdir $galleries
 
+git config -l
+
 # -- init git
 git checkout --orphan gh-pages
 
