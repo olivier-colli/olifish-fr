@@ -8,7 +8,6 @@ rm -Rf $galleries
 mkdir $galleries
 
 # -- init git
-git branch -D gh-pages
 git checkout --orphan gh-pages
 
 # compose index and galleries page
