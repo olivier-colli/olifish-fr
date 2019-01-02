@@ -34,7 +34,7 @@ readIndexFiles.then(promisesResult => {
         const body = nano(file.get('body'), {gallery: gallery})
         const galleryPage = `
             ${file.get('head')}
-            <style>${nano(file.get('css'), `${path_.siteUrl.href}/assets/background-image.jpg`)}</style>
+            <style>${file.get('css')}</style>
             <script>${file.get('js')}</script>
             ${file.get('photoswipe')}
             ${file.get('header')}
@@ -54,10 +54,11 @@ function composeGallery(galleryMetas, photosMetas, file) {
             fishname: meta.nameFr,
             fishnameLatin: meta.nameLat,
             imgSize: `${meta.imgSize.width}x${meta.imgSize.height}`,
-            imgUrl: new URL(meta.filepath.img, path_.photosRepoUrl.href),
+            imgUrl: `${path_.photosRepoUrl}/${meta.filepath.img}`,
             Id: counter++,
-            thumbUrl: new URL(meta.filepath.thumb, path_.photosRepoUrl.href),
-            thumbSize: meta.thumbSize,
+            thumbUrl: `${path_.photosRepoUrl}/${meta.filepath.thumb}`,
+            thumbSizeWidth: meta.thumbSize.width,
+            thumbSizeHeight: meta.thumbSize.height,
             title: meta.location,
         }
         htmlGallery += nano(file.get('thumb'), metas)

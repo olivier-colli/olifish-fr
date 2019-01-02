@@ -5,7 +5,9 @@
   "keywords": ["diving", "underwater", "photographies", "fish"],
   "main": "",
   "scripts": {
-    "lint": "eslint ./examples"
+    "lint": "eslint ./examples",
+    "compose-galleries": "node --experimental-modules --no-warnings cli/composeGalleries.mjs",
+    "compose-index": "node --experimental-modules --no-warnings cli/composeIndex.mjs"
   },
   "repository": {
     "type": "git",
