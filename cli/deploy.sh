@@ -1,15 +1,13 @@
 #! /usr/bin/env bash
 # set -e # Exit with nonzero exit code if anything fails
 
-npm install photoswipe
+npm install
 
 galleries='./galeries'
 
 # init
 rm -Rf $galleries
 mkdir $galleries
-
-git config -l
 
 # -- init git
 git checkout --orphan gh-pages
