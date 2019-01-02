@@ -5,7 +5,7 @@ deploy:
   provider: pages
   script: ./cli/deploy.sh
   skip-cleanup: true
-  token: $GH_TOKEN
+  github-token: $GH_TOKEN
   keep-history: true
   on:
     branch: add-travis
