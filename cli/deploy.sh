@@ -2,15 +2,19 @@
 
 galleries='./galeries'
 
-if [[ "$TRAVIS_COMMIT_MESSAGE" == "Travis: compose index and galleries" ]]
-then
-  exit 0
-fi
-
 # init
 rm -Rf $galleries
 mkdir $galleries
 
+# -- init git
+git branch -D gh-pages
+git checkout --orphan gh-pages
+
 # compose index and galleries page
 npm run compose-index
 npm run compose-galleries
+
+git add --force index.html $galleries
+git commit -m "add galleries and index"
+
+git push https://$token@github.com/olivier-colli/olifish-fr.git
