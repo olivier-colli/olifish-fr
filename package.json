@@ -13,7 +13,6 @@
     "type": "git",
     "url": "git+https://github.com/olivier-colli/olifish-fr.git"
   },
-  "keywords": ["underwater photography", "fish", "galleries", "photo"],
   "author": "Stéphane Langlois - pntbr - scopyleft",
   "license": "CC0-1.0",
   "bugs": {
