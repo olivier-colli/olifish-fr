@@ -1,0 +1,313 @@
+
+            <!DOCTYPE html>
+  <html itemscope itemtype=http://schema.org/WebPage lang=fr>
+  <meta charset=utf-8>
+  <meta name=viewport content="width=device-width, user-scalable=no">
+  <title>Olifish : Portfolio d'Olivier Colli</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108901544-1"></script>
+
+            <style>body {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
+    background:  #f7f8fa;
+    width: 100%;
+}
+a:link,
+a:visited {
+    text-decoration: none;
+    color: #9fa6b5;
+}
+header {
+    position: fixed;
+    width: 100%;
+    background: #2e4e72;
+    height: 3em;
+    display: flex;
+    justify-content: space-around;
+}
+header h1 {
+    line-height: .2em;
+    color: #ddd;
+}
+header a.contact {
+    font-size: 1.2em;
+    line-height: 2.5em;
+}
+header input {
+    margin: .5em;
+    border-radius: 25px;
+    background: #ddd;
+    text-indent: 1em;
+    height: 2em;
+    width: 20em;
+    font-size: .8em;
+}
+
+div.home {
+    background: url({backgroundImage}) top center no-repeat;
+    background-size: 100% auto;
+    font-size: 1.5em;
+    padding: 3em 5em 5em 10em; 
+    color: #ddd;
+}
+
+section,
+div.fish {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0;
+}
+div.fish {
+    padding-top: 3em;
+}
+section.gallery {
+    padding: 5em;
+    padding-top: 1em;
+}
+section.gallery h2 {
+    width: 100%;
+    color: #333;
+}
+img,
+figure.home,
+header input,
+header
+{
+    box-shadow: 0px 0px 3px 0px rgba(119, 119, 119, 0.73);
+    -webkit-box-shadow: 0px 0px 3px 0px rgba(119, 119, 119, 0.73);
+}
+.img p {
+    margin: 0;
+    text-align: center;
+}
+figure {
+    padding: 1em;
+    margin: 0;
+}
+figure figcaption,
+figure figcaption a:link,
+figure figcaption a:visited {
+    margin: 0;
+    text-align: center;
+    font-weight: lighter;
+    color: #71767a;
+    font-size: 1em;
+}
+figure h3 {
+    margin: 0;
+    text-align: center;
+    font-weight: lighter;
+    font-size: 1em;
+    color: #aaa;
+    font-style: italic;
+}
+</style>
+            <script>window.dataLayer = window.dataLayer || []
+function gtag(){dataLayer.push(arguments)}
+gtag('js', new Date())
+gtag('config', 'UA-108901544-1')
+
+window.addEventListener('DOMContentLoaded', () => {
+    window.onsubmit = event => {
+        event.preventDefault()
+        const query = document.querySelector('input').value
+        document.location.href = `/galleries/#${slugify(query)}`
+    }
+})
+
+const slugify = text => {
+    const a = 'àáäâèéëêìíïîòóöôùúüûñçßÿœæŕśńṕẃǵǹḿǘẍźḧ·/_,:;'
+    const b = 'aaaaeeeeiiiioooouuuuncsyoarsnpwgnmuxzh------'
+    const p = new RegExp(a.split('').join('|'), 'g')
+
+    return text.toString().toLowerCase()
+        .replace(/\s+/g, '-') // Replace spaces with -
+        .replace(p, c =>
+            b.charAt(a.indexOf(c))) // Replace special chars
+        .replace(/&/g, '-and-') // Replace & with 'and'
+        .replace(/[^\w-]+/g, '') // Remove all non-word chars
+        .replace(/--+/g, '-') // Replace multiple - with single -
+        .replace(/^-+/, '') // Trim - from start of text
+        .replace(/-+$/, '') // Trim - from end of text
+}
+</script>
+            <script src=/node_modules/photoswipe/dist/photoswipe.min.js></script>
+<script src=/node_modules/photoswipe/dist/photoswipe-ui-default.min.js></script>
+
+<script src=/assets/photoswipe.js></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', evt => {
+        photoSwipe.init()  
+    })
+</script>
+
+<link rel=stylesheet href=/node_modules/photoswipe/dist/photoswipe.css>
+<link rel=stylesheet href=/node_modules/photoswipe/dist/default-skin/default-skin.css>
+
+            <header>
+    <h1><a href="/">OliFish</a></h1>
+    <form action=/ method=get>
+        <input type=text placeholder=Recherche>
+    </form>
+    <a href=mailto:contact@olifish.com class=contact>@contact</a>
+</header>
+            <div class=body>
+    <div class=fish><figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Baliste strié - <em>Balistapus undulatus</em>" itemprop=contentUrl data-size="211x141" href="https://olivier-colli.github.io/olifish-photos/img/img-519.jpg">
+    <img itemprop="thumbnail" alt="Baliste strié - Balistapus undulatus" data-id="0" src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-519.jpg" style="width: 2400; height: 1600;" title="egypte-Coraya-baie-avr-2014">
+    </a>
+    <figcaption itemprop="caption description">Balistapus undulatus</figcaption>   
+    <h3>Baliste strié</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Baliste picasso arabe - <em>Rhinecanthus assasi</em>" itemprop=contentUrl data-size="267x178" href="https://olivier-colli.github.io/olifish-photos/img/img-521.jpg">
+    <img itemprop="thumbnail" alt="Baliste picasso arabe - Rhinecanthus assasi" data-id="1" src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-521.jpg" style="width: 2400; height: 1600;" title="egypte-Coraya-baie-avr-2014">
+    </a>
+    <figcaption itemprop="caption description">Rhinecanthus assasi</figcaption>   
+    <h3>Baliste picasso arabe</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Poisson faucon de forster - <em>Paracirrhites forsteri</em>" itemprop=contentUrl data-size="267x178" href="https://olivier-colli.github.io/olifish-photos/img/img-522.jpg">
+    <img itemprop="thumbnail" alt="Poisson faucon de forster - Paracirrhites forsteri" data-id="2" src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-522.jpg" style="width: 2400; height: 1600;" title="egypte-Coraya-baie-avr-2014">
+    </a>
+    <figcaption itemprop="caption description">Paracirrhites forsteri</figcaption>   
+    <h3>Poisson faucon de forster</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Nason à Eperons Oranges - <em>Naso elegans</em>" itemprop=contentUrl data-size="267x178" href="https://olivier-colli.github.io/olifish-photos/img/img-523.jpg">
+    <img itemprop="thumbnail" alt="Nason à Eperons Oranges - Naso elegans" data-id="3" src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-523.jpg" style="width: 2400; height: 1600;" title="egypte-Coraya-baie-avr-2014">
+    </a>
+    <figcaption itemprop="caption description">Naso elegans</figcaption>   
+    <h3>Nason à Eperons Oranges</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Papillon raton laveur de Mer Rouge - <em>Chaetodon fasciatus</em>" itemprop=contentUrl data-size="150x200" href="https://olivier-colli.github.io/olifish-photos/img/img-527.jpg">
+    <img itemprop="thumbnail" alt="Papillon raton laveur de Mer Rouge - Chaetodon fasciatus" data-id="4" src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-527.jpg" style="width: 1060; height: 1600;" title="egypte-Coraya-baie-avr-2014">
+    </a>
+    <figcaption itemprop="caption description">Chaetodon fasciatus</figcaption>   
+    <h3>Papillon raton laveur de Mer Rouge</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Labre oiseau - <em>Gomphosus caeruleus</em>" itemprop=contentUrl data-size="267x200" href="https://olivier-colli.github.io/olifish-photos/img/img-526.jpg">
+    <img itemprop="thumbnail" alt="Labre oiseau - Gomphosus caeruleus" data-id="5" src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-526.jpg" style="width: 2400; height: 1600;" title="egypte-Coraya-baie-avr-2014">
+    </a>
+    <figcaption itemprop="caption description">Gomphosus caeruleus</figcaption>   
+    <h3>Labre oiseau</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="ver plat tigré - <em>Pseudoceros dimidiatus</em>" itemprop=contentUrl data-size="267x178" href="https://olivier-colli.github.io/olifish-photos/img/img-524.jpg">
+    <img itemprop="thumbnail" alt="ver plat tigré - Pseudoceros dimidiatus" data-id="6" src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-524.jpg" style="width: 2400; height: 1600;" title="egypte-Coraya-baie-avr-2014">
+    </a>
+    <figcaption itemprop="caption description">Pseudoceros dimidiatus</figcaption>   
+    <h3>ver plat tigré</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Chirurgien strié - <em>Ctenochaetus striatus</em>" itemprop=contentUrl data-size="150x200" href="https://olivier-colli.github.io/olifish-photos/img/img-518.jpg">
+    <img itemprop="thumbnail" alt="Chirurgien strié - Ctenochaetus striatus" data-id="7" src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-518.jpg" style="width: 1060; height: 1600;" title="egypte-Coraya-baie-avr-2014">
+    </a>
+    <figcaption itemprop="caption description">Ctenochaetus striatus</figcaption>   
+    <h3>Chirurgien strié</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Labre a poitrine rouge - <em>Cheilinus fasciatus</em>" itemprop=contentUrl data-size="267x178" href="https://olivier-colli.github.io/olifish-photos/img/img-520.jpg">
+    <img itemprop="thumbnail" alt="Labre a poitrine rouge - Cheilinus fasciatus" data-id="8" src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-520.jpg" style="width: 2400; height: 1600;" title="egypte-Coraya-baie-avr-2014">
+    </a>
+    <figcaption itemprop="caption description">Cheilinus fasciatus</figcaption>   
+    <h3>Labre a poitrine rouge</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Poisson ballon à taches blanche - <em>Arothron hispidus</em>" itemprop=contentUrl data-size="267x178" href="https://olivier-colli.github.io/olifish-photos/img/img-525.jpg">
+    <img itemprop="thumbnail" alt="Poisson ballon à taches blanche - Arothron hispidus" data-id="9" src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-525.jpg" style="width: 2400; height: 1600;" title="egypte-Coraya-baie-avr-2014">
+    </a>
+    <figcaption itemprop="caption description">Arothron hispidus</figcaption>   
+    <h3>Poisson ballon à taches blanche</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Chirurgien voilier - <em>Zebrasoma desjardinii</em>" itemprop=contentUrl data-size="267x178" href="https://olivier-colli.github.io/olifish-photos/img/img-528.jpg">
+    <img itemprop="thumbnail" alt="Chirurgien voilier - Zebrasoma desjardinii" data-id="10" src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-528.jpg" style="width: 2400; height: 1600;" title="egypte-Coraya-baie-avr-2014">
+    </a>
+    <figcaption itemprop="caption description">Zebrasoma desjardinii</figcaption>   
+    <h3>Chirurgien voilier</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Poisson porc-épic à taches jaunes - <em>Cyclichthys spilostylus</em>" itemprop=contentUrl data-size="300x225" href="https://olivier-colli.github.io/olifish-photos/img/img-514.jpg">
+    <img itemprop="thumbnail" alt="Poisson porc-épic à taches jaunes - Cyclichthys spilostylus" data-id="11" src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-514.jpg" style="width: 2400; height: 1600;" title="egypte-Coraya-baie-avr-2014">
+    </a>
+    <figcaption itemprop="caption description">Cyclichthys spilostylus</figcaption>   
+    <h3>Poisson porc-épic à taches jaunes</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Poisson perroquet commun - <em>Scarus psittacus</em>" itemprop=contentUrl data-size="300x200" href="https://olivier-colli.github.io/olifish-photos/img/img-515.jpg">
+    <img itemprop="thumbnail" alt="Poisson perroquet commun - Scarus psittacus" data-id="12" src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-515.jpg" style="width: 2400; height: 1600;" title="egypte-Coraya-baie-avr-2014">
+    </a>
+    <figcaption itemprop="caption description">Scarus psittacus</figcaption>   
+    <h3>Poisson perroquet commun</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Chirurgien voilier - <em>Zebrasoma desjardinii</em>" itemprop=contentUrl data-size="300x200" href="https://olivier-colli.github.io/olifish-photos/img/img-529.jpg">
+    <img itemprop="thumbnail" alt="Chirurgien voilier - Zebrasoma desjardinii" data-id="13" src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-529.jpg" style="width: 2400; height: 1600;" title="egypte-Coraya-baie-avr-2014">
+    </a>
+    <figcaption itemprop="caption description">Zebrasoma desjardinii</figcaption>   
+    <h3>Chirurgien voilier</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Vivaneau eglefin - <em>Lutjanus monostigma</em>" itemprop=contentUrl data-size="267x178" href="https://olivier-colli.github.io/olifish-photos/img/img-517.jpg">
+    <img itemprop="thumbnail" alt="Vivaneau eglefin - Lutjanus monostigma" data-id="14" src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-517.jpg" style="width: 2400; height: 1600;" title="egypte-Coraya-baie-avr-2014">
+    </a>
+    <figcaption itemprop="caption description">Lutjanus monostigma</figcaption>   
+    <h3>Vivaneau eglefin</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Poisson perroquet commun - <em>Scarus psittacus</em>" itemprop=contentUrl data-size="150x200" href="https://olivier-colli.github.io/olifish-photos/img/img-516.jpg">
+    <img itemprop="thumbnail" alt="Poisson perroquet commun - Scarus psittacus" data-id="15" src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-516.jpg" style="width: 1060; height: 1600;" title="egypte-Coraya-baie-avr-2014">
+    </a>
+    <figcaption itemprop="caption description">Scarus psittacus</figcaption>   
+    <h3>Poisson perroquet commun</h3>
+</figure>
+
+</div>
+
+<div class=pswp tabindex=-1 role=dialog aria-hidden=true>
+    <div class=pswp__bg></div>
+    <div class=pswp__scroll-wrap>
+        <div class=pswp__container>
+            <div class=pswp__item></div>
+            <div class=pswp__item></div>
+            <div class=pswp__item></div>
+        </div>
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </html>
+        

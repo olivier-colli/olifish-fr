@@ -31,7 +31,7 @@ readIndexFiles.then(promisesResult => {
     const body = nano(file.get('body'), {galleries: htmlGalleries})
     const index = `
         ${file.get('head')}
-        <style>${file.get('css')}</style>
+        <style>${nano(file.get('css'), {'backgroundImage': './assets/background-image.jpg'})}</style>
         <script>${file.get('js')}</script>
         ${file.get('header')}
         ${body}
@@ -48,13 +48,13 @@ const writeHome = content =>
 const composeGalleries = (config, tpl) =>
     config.map(galleryData => composeGallery(galleryData, tpl)).join('')
 
-function composeGallery(data, tpl) {
+function composeGallery(meta, tpl) {
     const datas = {
-        title: data.title,
-        description: data.description,
-        img: data.img,
-        href: `/galleries/${slugify(data.title)}.html`,
-        src: `https://www.olifish.com/light-thumbs/thumb-${data.img}.jpg`
+        title: meta.title,
+        description: meta.description,
+        img: meta.img,
+        href: `./galeries/${slugify(meta.title)}.html`,
+        src: `${path_.photosRepoUrl}/thumb/thumb-${meta.img}.jpg`
     }
     return nano(tpl, datas)
 }
