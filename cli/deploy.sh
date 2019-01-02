@@ -2,14 +2,14 @@
 
 galleries='./galeries'
 
-if [[ "$TRAVIS_COMMIT_MESSAGE" == "Travis: cpmopse index and galleries" ]]
+if [[ "$TRAVIS_COMMIT_MESSAGE" == "Travis: compose index and galleries" ]]
 then
   exit 0
 fi
 
 # init
 rm -Rf $galleries
-mkdir $galeries
+mkdir $galleries
 
 # compose index and galleries page
 npm run compose-index
