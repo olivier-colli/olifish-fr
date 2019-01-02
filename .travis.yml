@@ -1,7 +1,11 @@
 language: node_js
 node_js: '10'
 sudo: required
-script: ./cli/deploy.sh
-env:
-  global:
-    secure: YUVvu6xQ6xbnde5W55+vKH7EDglvXkr+HdSLO1GUoOPbzayTZ4v+HhxLVTXn48XG75v5CUJ6wrlAK1pgxxTUkh8/8IRhy/lNAn0S+IyDSw8H1gpdNJY2jKoja1DsWBMQBBVpjScSKtyqkPbd8kcB+XF3tgJ3ssCM3jg300JOM6lH10/HdBeTw/56u+CdU3EMGPF2AQlkiSec6lICnxHJZczG8VZda0/7FFGSGDrOIzHb1zW9jcvS99tjutsrO0LKW3T8Z7DrIWtYMnTDvNmPXHM4LVd3qDuLIoug4bvjDhswMvFkgdcMA5pXKylafjA8vm+qbo8oK0RyJXwmh9Q0c0kkCkGoG9HI5Psqm16IsANDmMLcce6VOqgwmX5D+r1uLYAfyzMdhzZe658p/mRvPyw6bKwzKfSMFfkNdxloXvcsM8WsuhQ0a2STcMnnw3lpAOaPhv+FTVjonJzmPC9+/Rfz3xA1GWlgizSS7T25rY1nFKZ321BhkADWdsyXIorpXMa1tnYe1+frjTKjde0ws0Jxmb5LcHKfvnWNGNyYkSvDsrWAXKI6uKB5fbhDpT8yojmBHfDDDsurvL9UqWy1MTD0bOnBeXWSRQTFwXPHaEFUHbTtm1kKE1SST2p/zs5SCsbOwKxrAvlwQrTbIHNbuPPCy77e4hr4G8RTdeSMo6o=
+deploy:
+  provider: pages
+  script: ./cli/deploy.sh
+  skip-cleanup: true
+  token: $GH_TOKEN
+  keep-history: true
+  on:
+    branch: add-travis
