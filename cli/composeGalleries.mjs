@@ -69,11 +69,18 @@ function composeGallery(galleryMetas, photosMetas, file) {
 function writeGallery(dir, name, content) {
     fs.access(dir, err => {
         if (err) {
-            fs.mkdirSync(dir)
+            fs.mkdir(dir, () => {
+                writeGallery(dir, name, content)
+            })
+        } else {
+            writeGallery(dir, name, content)
         }
+    })
+
+    function writeGallery(dir, name, content) {
         fs.writeFile(path.join(dir, name), content, 'utf8', err => {
             if (err) throw err
             console.log('write gallery:', path.join(dir, name))
         })
-    })
+    }
 }
