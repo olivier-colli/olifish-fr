@@ -32,7 +32,7 @@ readIndexFiles.then(promisesResult => {
         const photosMetas = db.findAll( file.get('db'), galleryMeta.title)
         const gallery = composeGallery(galleryMeta, photosMetas, file)
         const body = nano(file.get('body'), {gallery: gallery})
-        const galleryPage = `
+        const galleryContent = `
             ${file.get('head')}
             <style>${file.get('css')}</style>
             <script>${file.get('js')}</script>
@@ -41,8 +41,8 @@ readIndexFiles.then(promisesResult => {
             ${body}
         </html>
         `
-        const galleryPath = path.join(path_.galleriesDir, `${slugify(galleryMeta.title)}.html`)
-        writeGallery(galleryPath, galleryPage)
+        const galleryFilename = `${slugify(galleryMeta.title)}.html`
+        writeGallery(path_.galleriesDir, galleryFilename, galleryContent)
     })
 })
 
@@ -66,8 +66,21 @@ function composeGallery(galleryMetas, photosMetas, file) {
     return htmlGallery
 }
 
-function writeGallery(name, content) {
-    fs.writeFile(name, content, 'utf8', err => {
-        if (err) throw err
+function writeGallery(dir, name, content) {
+    fs.access(dir, err => {
+        if (err) {
+            fs.mkdir(dir, () => {
+                writeGallery(dir, name, content)
+            })
+        } else {
+            writeGallery(dir, name, content)
+        }
     })
+
+    function writeGallery(dir, name, content) {
+        fs.writeFile(path.join(dir, name), content, 'utf8', err => {
+            if (err) throw err
+            console.log('write gallery:', path.join(dir, name))
+        })
+    }
 }
