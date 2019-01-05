@@ -57,7 +57,7 @@ function composeGallery(meta, tpl) {
         title: meta.title,
         description: meta.description,
         img: meta.img,
-        href: `./galeries/${slugify(meta.title)}.html`,
+        href: `${path_.galleriesDir}/${slugify(meta.title)}.html`,
         src: `${path_.photosRepoUrl}/thumb/thumb-${meta.img}.jpg`
     }
     return nano(tpl, datas)
