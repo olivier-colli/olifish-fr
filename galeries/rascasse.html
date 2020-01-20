@@ -1,0 +1,359 @@
+
+            <!DOCTYPE html>
+  <html itemscope itemtype=http://schema.org/WebPage lang=fr>
+  <meta charset=utf-8>
+  <meta name=viewport content="width=device-width, user-scalable=no">
+  <title>Olifish : Portfolio d'Olivier Colli</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108901544-1"></script>
+
+            <style>body {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
+    background:  #f7f8fa;
+    width: 100%;
+}
+a:link,
+a:visited {
+    text-decoration: none;
+    color: #9fa6b5;
+}
+header {
+    position: fixed;
+    width: 100%;
+    background: #2e4e72;
+    height: 3em;
+    display: flex;
+    justify-content: space-around;
+}
+header h1 {
+    line-height: .2em;
+    color: #ddd;
+}
+header a.contact {
+    font-size: 1.2em;
+    line-height: 2.5em;
+}
+header input {
+    margin: .5em;
+    border-radius: 25px;
+    background: #ddd;
+    text-indent: 1em;
+    height: 2em;
+    width: 20em;
+    font-size: .8em;
+}
+
+section,
+div.fish {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0;
+}
+div.fish {
+    padding-top: 3em;
+}
+section.gallery {
+    padding: 5em;
+    padding-top: 1em;
+}
+section.gallery h2 {
+    width: 100%;
+    color: #333;
+}
+img,
+figure.home,
+header input,
+header
+{
+    box-shadow: 0px 0px 3px 0px rgba(119, 119, 119, 0.73);
+    -webkit-box-shadow: 0px 0px 3px 0px rgba(119, 119, 119, 0.73);
+}
+.img p {
+    margin: 0;
+    text-align: center;
+}
+figure {
+    margin: 1em;
+    font-size: 1em;
+    text-align: center;
+}
+figure figcaption,
+figure figcaption a:link,
+figure figcaption a:visited {
+    color: #aaa;
+    font-style: italic;
+}
+figure h3 {
+    font-weight: lighter;
+    color: #71767a;
+    margin: 0 1em;
+}
+</style>
+            <script>window.dataLayer = window.dataLayer || []
+function gtag() {
+    dataLayer.push(arguments)
+}
+gtag('js', new Date())
+gtag('config', 'UA-108901544-1')
+
+window.addEventListener('DOMContentLoaded', () => {
+    window.onsubmit = event => {
+        event.preventDefault()
+        const query = document.querySelector('input').value
+        document.location.href = `/galeries/#${slugify(query)}`
+    }
+})
+
+const slugify = text => {
+    const a = 'àáäâèéëêìíïîòóöôùúüûñçßÿœæŕśńṕẃǵǹḿǘẍźḧ·/_,:;'
+    const b = 'aaaaeeeeiiiioooouuuuncsyoarsnpwgnmuxzh------'
+    const p = new RegExp(a.split('').join('|'), 'g')
+
+    return text
+        .toString()
+        .toLowerCase()
+        .replace(/\s+/g, '-') // Replace spaces with -
+        .replace(p, c => b.charAt(a.indexOf(c))) // Replace special chars
+        .replace(/&/g, '-and-') // Replace & with 'and'
+        .replace(/[^\w-]+/g, '') // Remove all non-word chars
+        .replace(/--+/g, '-') // Replace multiple - with single -
+        .replace(/^-+/, '') // Trim - from start of text
+        .replace(/-+$/, '') // Trim - from end of text
+}
+</script>
+            <script src=/vendors/photoswipe/dist/photoswipe.min.js></script>
+<script src=/vendors/photoswipe/dist/photoswipe-ui-default.min.js></script>
+
+<script src=/assets/photoswipe.js></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', evt => {
+        photoSwipe.init()  
+    })
+</script>
+
+<link rel=stylesheet href=/vendors/photoswipe/dist/photoswipe.css>
+<link rel=stylesheet href=/vendors/photoswipe/dist/default-skin/default-skin.css>
+
+<div class=pswp tabindex=-1 role=dialog aria-hidden=true>
+    <div class=pswp__bg></div>
+    <div class=pswp__scroll-wrap>
+        <div class=pswp__container>
+            <div class=pswp__item></div>
+            <div class=pswp__item></div>
+            <div class=pswp__item></div>
+        </div>
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+            <header>
+    <h1><a href="/">OliFish</a></h1>
+    <form action=/ method=get>
+        <input type=text placeholder=Recherche>
+    </form>
+    <a href=mailto:contact@olifish.com class=contact>@contact</a>
+</header>
+            <div class="body">
+    <div class=fish><figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Rascasse de Madère - <em>Scorpaena maderensis</em>" itemprop=contentUrl data-size="2400x1600" href="https://olivier-colli.github.io/olifish-photos/img/img-5.jpg">
+    <img itemprop="thumbnail" alt="Rascasse de Madère - Scorpaena maderensis" data-id="0" src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-5.jpg" style="width: 300px; height: 200px" title="Lanzarote">
+    </a>
+    <figcaption itemprop="caption description">Scorpaena maderensis</figcaption>   
+    <h3>Rascasse de Madère</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Rascasse volante - <em>Pterois volitans</em>" itemprop=contentUrl data-size="1060x1600" href="https://olivier-colli.github.io/olifish-photos/img/img-282.jpg">
+    <img itemprop="thumbnail" alt="Rascasse volante - Pterois volitans" data-id="1" src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-282.jpg" style="width: 133px; height: 200px" title="egypte-coraya-baie-nov-2016">
+    </a>
+    <figcaption itemprop="caption description">Pterois volitans</figcaption>   
+    <h3>Rascasse volante</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Rascasse volante - <em>Pterois volitans</em>" itemprop=contentUrl data-size="2400x1600" href="https://olivier-colli.github.io/olifish-photos/img/img-452.jpg">
+    <img itemprop="thumbnail" alt="Rascasse volante - Pterois volitans" data-id="2" src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-452.jpg" style="width: 300px; height: 200px" title="egypte-coral-garden-avr-2015">
+    </a>
+    <figcaption itemprop="caption description">Pterois volitans</figcaption>   
+    <h3>Rascasse volante</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Rascasse volante - <em>Pterois volitans</em>" itemprop=contentUrl data-size="2400x1600" href="https://olivier-colli.github.io/olifish-photos/img/img-320.jpg">
+    <img itemprop="thumbnail" alt="Rascasse volante - Pterois volitans" data-id="3" src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-320.jpg" style="width: 300px; height: 198px" title="egypte-brayka-baie-nov-2015">
+    </a>
+    <figcaption itemprop="caption description">Pterois volitans</figcaption>   
+    <h3>Rascasse volante</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Rascasse volante - <em>Pterois volitans</em>" itemprop=contentUrl data-size="1060x1600" href="https://olivier-colli.github.io/olifish-photos/img/img-281.jpg">
+    <img itemprop="thumbnail" alt="Rascasse volante - Pterois volitans" data-id="4" src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-281.jpg" style="width: 133px; height: 200px" title="egypte-coraya-baie-nov-2016">
+    </a>
+    <figcaption itemprop="caption description">Pterois volitans</figcaption>   
+    <h3>Rascasse volante</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Rascasse volante - <em></em>" itemprop=contentUrl data-size="1060x1600" href="https://olivier-colli.github.io/olifish-photos/img/img-451.jpg">
+    <img itemprop="thumbnail" alt="Rascasse volante - " data-id="5" src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-451.jpg" style="width: 133px; height: 200px" title="egypte-coral-garden-avr-2015">
+    </a>
+    <figcaption itemprop="caption description"></figcaption>   
+    <h3>Rascasse volante</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Rascasse volante - <em>Pterois volitans</em>" itemprop=contentUrl data-size="2400x1600" href="https://olivier-colli.github.io/olifish-photos/img/img-594.jpg">
+    <img itemprop="thumbnail" alt="Rascasse volante - Pterois volitans" data-id="6" src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-594.jpg" style="width: 300px; height: 200px" title="egypte-coral-garden-nov-2017">
+    </a>
+    <figcaption itemprop="caption description">Pterois volitans</figcaption>   
+    <h3>Rascasse volante</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Rascasse volante - <em>Pterois volitans</em>" itemprop=contentUrl data-size="2400x1600" href="https://olivier-colli.github.io/olifish-photos/img/img-150.jpg">
+    <img itemprop="thumbnail" alt="Rascasse volante - Pterois volitans" data-id="7" src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-150.jpg" style="width: 300px; height: 200px" title="egypte-coraya-baie-nov-2016">
+    </a>
+    <figcaption itemprop="caption description">Pterois volitans</figcaption>   
+    <h3>Rascasse volante</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Rascasse volante - <em>Pterois volitans</em>" itemprop=contentUrl data-size="2400x1600" href="https://olivier-colli.github.io/olifish-photos/img/img-391.jpg">
+    <img itemprop="thumbnail" alt="Rascasse volante - Pterois volitans" data-id="8" src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-391.jpg" style="width: 300px; height: 200px" title="egypte-coral-garden-avr-2015">
+    </a>
+    <figcaption itemprop="caption description">Pterois volitans</figcaption>   
+    <h3>Rascasse volante</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Rascasse volante - <em>Pterois volitans</em>" itemprop=contentUrl data-size="2400x1600" href="https://olivier-colli.github.io/olifish-photos/img/img-72.jpg">
+    <img itemprop="thumbnail" alt="Rascasse volante - Pterois volitans" data-id="9" src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-72.jpg" style="width: 300px; height: 200px" title="">
+    </a>
+    <figcaption itemprop="caption description">Pterois volitans</figcaption>   
+    <h3>Rascasse volante</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Rascasse volante - <em></em>" itemprop=contentUrl data-size="2400x1600" href="https://olivier-colli.github.io/olifish-photos/img/img-369.jpg">
+    <img itemprop="thumbnail" alt="Rascasse volante - " data-id="10" src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-369.jpg" style="width: 300px; height: 200px" title="egypte-brayka-baie-nov-2015">
+    </a>
+    <figcaption itemprop="caption description"></figcaption>   
+    <h3>Rascasse volante</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Rascasse volante - <em></em>" itemprop=contentUrl data-size="2400x1600" href="https://olivier-colli.github.io/olifish-photos/img/img-358.jpg">
+    <img itemprop="thumbnail" alt="Rascasse volante - " data-id="11" src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-358.jpg" style="width: 300px; height: 200px" title="egypte-brayka-baie-nov-2015">
+    </a>
+    <figcaption itemprop="caption description"></figcaption>   
+    <h3>Rascasse volante</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Rascasse volante - <em>Pterois volitans</em>" itemprop=contentUrl data-size="2400x1600" href="https://olivier-colli.github.io/olifish-photos/img/img-1227.jpg">
+    <img itemprop="thumbnail" alt="Rascasse volante - Pterois volitans" data-id="12" src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-1227.jpg" style="width: 300px; height: 200px" title="Brayka-baie-nov-2018">
+    </a>
+    <figcaption itemprop="caption description">Pterois volitans</figcaption>   
+    <h3>Rascasse volante</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Rascasse volante - <em></em>" itemprop=contentUrl data-size="2400x1600" href="https://olivier-colli.github.io/olifish-photos/img/img-363.jpg">
+    <img itemprop="thumbnail" alt="Rascasse volante - " data-id="13" src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-363.jpg" style="width: 280px; height: 200px" title="egypte-brayka-baie-nov-2015">
+    </a>
+    <figcaption itemprop="caption description"></figcaption>   
+    <h3>Rascasse volante</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Rascasse volante - <em></em>" itemprop=contentUrl data-size="2400x1600" href="https://olivier-colli.github.io/olifish-photos/img/img-411.jpg">
+    <img itemprop="thumbnail" alt="Rascasse volante - " data-id="14" src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-411.jpg" style="width: 300px; height: 200px" title="">
+    </a>
+    <figcaption itemprop="caption description"></figcaption>   
+    <h3>Rascasse volante</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Rascasse volante - <em></em>" itemprop=contentUrl data-size="2400x1600" href="https://olivier-colli.github.io/olifish-photos/img/img-410.jpg">
+    <img itemprop="thumbnail" alt="Rascasse volante - " data-id="15" src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-410.jpg" style="width: 300px; height: 200px" title="egypte-coral-garden-avr-2015">
+    </a>
+    <figcaption itemprop="caption description"></figcaption>   
+    <h3>Rascasse volante</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Rascasse volante - <em></em>" itemprop=contentUrl data-size="1060x1600" href="https://olivier-colli.github.io/olifish-photos/img/img-362.jpg">
+    <img itemprop="thumbnail" alt="Rascasse volante - " data-id="16" src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-362.jpg" style="width: 143px; height: 200px" title="egypte-brayka-baie-nov-2015">
+    </a>
+    <figcaption itemprop="caption description"></figcaption>   
+    <h3>Rascasse volante</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Rascasse volante - <em>Pterois volitans</em>" itemprop=contentUrl data-size="1060x1600" href="https://olivier-colli.github.io/olifish-photos/img/img-799.jpg">
+    <img itemprop="thumbnail" alt="Rascasse volante - Pterois volitans" data-id="17" src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-799.jpg" style="width: 133px; height: 200px" title="egypte-coral-garden-nov-2017">
+    </a>
+    <figcaption itemprop="caption description">Pterois volitans</figcaption>   
+    <h3>Rascasse volante</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Rascasse volante - <em>Pterois volitans</em>" itemprop=contentUrl data-size="2400x1600" href="https://olivier-colli.github.io/olifish-photos/img/img-214.jpg">
+    <img itemprop="thumbnail" alt="Rascasse volante - Pterois volitans" data-id="18" src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-214.jpg" style="width: 300px; height: 200px" title="egypte-coraya-baie-nov-2016">
+    </a>
+    <figcaption itemprop="caption description">Pterois volitans</figcaption>   
+    <h3>Rascasse volante</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Rascasse volante - <em></em>" itemprop=contentUrl data-size="2400x1600" href="https://olivier-colli.github.io/olifish-photos/img/img-412.jpg">
+    <img itemprop="thumbnail" alt="Rascasse volante - " data-id="19" src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-412.jpg" style="width: 300px; height: 200px" title="egypte-coral-garden-avr-2015">
+    </a>
+    <figcaption itemprop="caption description"></figcaption>   
+    <h3>Rascasse volante</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Rascasse volante - <em>Pterois volitans</em>" itemprop=contentUrl data-size="1060x1600" href="https://olivier-colli.github.io/olifish-photos/img/img-738.jpg">
+    <img itemprop="thumbnail" alt="Rascasse volante - Pterois volitans" data-id="20" src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-738.jpg" style="width: 133px; height: 200px" title="egypte-coral-garden-nov-2017">
+    </a>
+    <figcaption itemprop="caption description">Pterois volitans</figcaption>   
+    <h3>Rascasse volante</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Rascasse volante - <em>Pterois volitans</em>" itemprop=contentUrl data-size="2400x1600" href="https://olivier-colli.github.io/olifish-photos/img/img-115.jpg">
+    <img itemprop="thumbnail" alt="Rascasse volante - Pterois volitans" data-id="21" src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-115.jpg" style="width: 300px; height: 200px" title="">
+    </a>
+    <figcaption itemprop="caption description">Pterois volitans</figcaption>   
+    <h3>Rascasse volante</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Rascasse volante - <em>Pterois volitans</em>" itemprop=contentUrl data-size="2400x1600" href="https://olivier-colli.github.io/olifish-photos/img/img-114.jpg">
+    <img itemprop="thumbnail" alt="Rascasse volante - Pterois volitans" data-id="22" src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-114.jpg" style="width: 300px; height: 200px" title="">
+    </a>
+    <figcaption itemprop="caption description">Pterois volitans</figcaption>   
+    <h3>Rascasse volante</h3>
+</figure>
+<figure class=img itemprop=associatedMedia itemtype=http://schema.org/ImageObject>
+    <a data-caption="Rascasse volante rayonnée - <em>Pterois radiata</em>" itemprop=contentUrl data-size="2400x1600" href="https://olivier-colli.github.io/olifish-photos/img/img-605.jpg">
+    <img itemprop="thumbnail" alt="Rascasse volante rayonnée - Pterois radiata" data-id="23" src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-605.jpg" style="width: 300px; height: 200px" title="egypte-coral-garden-nov-2017">
+    </a>
+    <figcaption itemprop="caption description">Pterois radiata</figcaption>   
+    <h3>Rascasse volante rayonnée</h3>
+</figure>
+
+</div>
+
+        </html>
+        
