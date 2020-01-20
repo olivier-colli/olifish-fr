@@ -38,10 +38,11 @@ readIndexFiles.then(promisesResult => {
         const photosMetas = db.findAll(file.get('db'), galleryMeta.title)
         const gallery = composeGallery(galleryMeta, photosMetas, file)
         const body = nano(file.get('body'), { gallery: gallery })
+        const js = nano(file.get('js'), { galleriesDir: path_.galleriesDir })
         const galleryContent = `
             ${file.get('head')}
             <style>${file.get('css')}</style>
-            <script>${file.get('js')}</script>
+            <script>${js}</script>
             ${file.get('photoswipe')}
             ${file.get('header')}
             ${body}

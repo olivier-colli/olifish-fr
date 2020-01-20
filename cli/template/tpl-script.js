@@ -9,7 +9,7 @@ window.addEventListener('DOMContentLoaded', () => {
     window.onsubmit = event => {
         event.preventDefault()
         const query = document.querySelector('input').value
-        document.location.href = `/galeries/#${slugify(query)}`
+        document.location.href = `/{galleriesDir}/#${slugify(query)}`
     }
 })
 
