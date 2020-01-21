@@ -1,6 +1,6 @@
 {
   "name": "olifish-fr",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Site d'Olivier Colli photographe passionné par la plongée sous-marine.",
   "keywords": [
     "diving",
@@ -12,6 +12,7 @@
   "scripts": {
     "lint": "eslint ./examples",
     "compose-galleries": "node --experimental-modules --no-warnings cli/composeGalleries.mjs",
+    "compose-galleries-search": "node --experimental-modules --no-warnings cli/composeGalleriesSearch.mjs",
     "compose-index": "node --experimental-modules --no-warnings cli/composeIndex.mjs"
   },
   "repository": {
