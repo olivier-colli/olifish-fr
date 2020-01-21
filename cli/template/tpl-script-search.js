@@ -83,13 +83,13 @@ display.imgs = imgsSelect => {
     imgsSelect.map(metas => {
         const a = tpl.content.querySelector('a')
         const thumb = tpl.content.querySelector('img')
-        const pFr = tpl.content.querySelector('figcaption')
-        const pLatin = tpl.content.querySelector('h3')
+        const pLatin = tpl.content.querySelector('figcaption')
+        const pName = tpl.content.querySelector('h3')
 
         a.href = `${photosRepo}/${metas.filepath.img}`
         a.setAttribute(
             'data-caption',
-            `${metas.nameFr} - <i>${metas.nameLat}</i>`
+            `${metas.nameLat} - <i>${metas.nameFr}</i>`
         )
         a.setAttribute(
             'data-size',
@@ -105,7 +105,7 @@ display.imgs = imgsSelect => {
         thumb.alt = `${metas.nameLat} - ${metas.nameFr}`
 
         pLatin.innerHTML = fishnametoAnchor(metas.nameLat)
-        pFr.innerHTML = fishnametoAnchor(metas.nameFr)
+        pName.innerHTML = fishnametoAnchor(metas.nameFr)
 
         const clone = document.importNode(tpl.content, true)
         area.appendChild(clone)

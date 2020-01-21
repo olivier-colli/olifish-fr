@@ -23,9 +23,7 @@ const generateSitemap = config => {
             gallery =>
                 `
     <url>
-      <loc>https://www.olifish.com/galleries/${slugify(
-          gallery.title
-      )}.html</loc>
+      <loc>https://www.olifish.fr/galeries/${slugify(gallery.title)}.html</loc>
       <lastmod>${moment().format('YYYY-MM-DD')}</lastmod>
       <changefreq>daily</changefreq>
       <priority>0.8000</priority>
@@ -42,7 +40,7 @@ const generateSitemap = config => {
     <!-- www.check-domains.com sitemap generator -->
 
   <url>
-    <loc>https://www.olifish.com/</loc>
+    <loc>https://www.olifish.fr/</loc>
     <lastmod>${moment().format('YYYY-MM-DD')}</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0000</priority>
