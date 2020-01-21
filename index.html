@@ -13,7 +13,7 @@
     font-family: Arial, Helvetica, sans-serif;
     padding: 0;
     margin: 0;
-    background:  #f7f8fa;
+    background: #f7f8fa;
     width: 100%;
 }
 a:link,
@@ -30,21 +30,22 @@ header {
     justify-content: space-around;
 }
 header h1 {
-    line-height: .2em;
+    line-height: 0.2em;
     color: #ddd;
 }
-header a.contact {
+header .contact,
+header .lang {
     font-size: 1.2em;
     line-height: 2.5em;
 }
 header input {
-    margin: .5em;
+    margin: 0.5em;
     border-radius: 25px;
     background: #ddd;
     text-indent: 1em;
     height: 2em;
     width: 20em;
-    font-size: .8em;
+    font-size: 0.8em;
 }
 
 section,
@@ -68,8 +69,7 @@ section.gallery h2 {
 img,
 figure.home,
 header input,
-header
-{
+header {
     box-shadow: 0px 0px 3px 0px rgba(119, 119, 119, 0.73);
     -webkit-box-shadow: 0px 0px 3px 0px rgba(119, 119, 119, 0.73);
 }
@@ -139,7 +139,12 @@ const slugify = text => {
     <form action=/ method=get>
         <input type=text placeholder=Recherche>
     </form>
-    <a href=mailto:contact@olifish.com class=contact>@contact</a>
+    <div class="lang">
+        <a href=https://www.olifish.com>EN -</a>
+        <a href=https://www.olifish.fr>FR -</a>
+        <a href=https://www.olifish.de>DE -</a>
+        <a href=https://www.olifish.es>ES</a>
+    </div>
 </header>
         <div class=body>
     <div class=home>
@@ -152,100 +157,100 @@ const slugify = text => {
     </div>
     <section class="gallery">
         <h2>Mes galeries :</h2>
-        <figure class=img>
-    <a href="./galeries/brayka-baie-nov-2018.html" class=gallery>
-        <img src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-1149.jpg" alt="$Brayka baie nov 2018">
+        <figure class="img">
+    <a href="./galeries/brayka-baie-nov-2018.html" class="gallery">
+        <img src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-1149.jpg" alt="$Brayka baie nov 2018" />
     </a>
     <figcaption itemprop="caption description">Egypte</figcaption>
     <h3>Brayka baie nov 2018</h3>
 </figure>
-<figure class=img>
-    <a href="./galeries/coraya-baie-avril-2018.html" class=gallery>
-        <img src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-1087.jpg" alt="$Coraya baie avril 2018">
+<figure class="img">
+    <a href="./galeries/coraya-baie-avril-2018.html" class="gallery">
+        <img src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-1087.jpg" alt="$Coraya baie avril 2018" />
     </a>
     <figcaption itemprop="caption description">Egypte</figcaption>
     <h3>Coraya baie avril 2018</h3>
 </figure>
-<figure class=img>
-    <a href="./galeries/coraya-baie-mai-2017.html" class=gallery>
-        <img src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-57.jpg" alt="$Coraya baie mai 2017">
+<figure class="img">
+    <a href="./galeries/coraya-baie-mai-2017.html" class="gallery">
+        <img src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-57.jpg" alt="$Coraya baie mai 2017" />
     </a>
     <figcaption itemprop="caption description">Égypte</figcaption>
     <h3>Coraya baie mai 2017</h3>
 </figure>
-<figure class=img>
-    <a href="./galeries/coral-garden-nov-2017.html" class=gallery>
-        <img src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-733.jpg" alt="$Coral garden nov 2017">
+<figure class="img">
+    <a href="./galeries/coral-garden-nov-2017.html" class="gallery">
+        <img src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-733.jpg" alt="$Coral garden nov 2017" />
     </a>
     <figcaption itemprop="caption description">Égypte</figcaption>
     <h3>Coral garden nov 2017</h3>
 </figure>
-<figure class=img>
-    <a href="./galeries/coraya-baie-nov-2016.html" class=gallery>
-        <img src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-233.jpg" alt="$Coraya baie nov 2016">
+<figure class="img">
+    <a href="./galeries/coraya-baie-nov-2016.html" class="gallery">
+        <img src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-233.jpg" alt="$Coraya baie nov 2016" />
     </a>
     <figcaption itemprop="caption description">Égypte</figcaption>
     <h3>Coraya baie nov 2016</h3>
 </figure>
-<figure class=img>
-    <a href="./galeries/brayka-baie-nov-2015.html" class=gallery>
-        <img src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-394.jpg" alt="$Brayka baie nov 2015">
+<figure class="img">
+    <a href="./galeries/brayka-baie-nov-2015.html" class="gallery">
+        <img src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-394.jpg" alt="$Brayka baie nov 2015" />
     </a>
     <figcaption itemprop="caption description">Égypte</figcaption>
     <h3>Brayka baie nov 2015</h3>
 </figure>
-<figure class=img>
-    <a href="./galeries/coral-garden-avr-2015.html" class=gallery>
-        <img src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-471.jpg" alt="$Coral garden avr 2015">
+<figure class="img">
+    <a href="./galeries/coral-garden-avr-2015.html" class="gallery">
+        <img src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-471.jpg" alt="$Coral garden avr 2015" />
     </a>
     <figcaption itemprop="caption description">Égypte</figcaption>
     <h3>Coral garden avr 2015</h3>
 </figure>
-<figure class=img>
-    <a href="./galeries/coraya-baie-avr-2014.html" class=gallery>
-        <img src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-634.jpg" alt="$Coraya baie avr 2014">
+<figure class="img">
+    <a href="./galeries/coraya-baie-avr-2014.html" class="gallery">
+        <img src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-634.jpg" alt="$Coraya baie avr 2014" />
     </a>
     <figcaption itemprop="caption description">Égypte</figcaption>
     <h3>Coraya baie avr 2014</h3>
 </figure>
-<figure class=img>
-    <a href="./galeries/coraya-baie-nov-2014.html" class=gallery>
-        <img src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-558.jpg" alt="$Coraya baie nov 2014">
+<figure class="img">
+    <a href="./galeries/coraya-baie-nov-2014.html" class="gallery">
+        <img src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-558.jpg" alt="$Coraya baie nov 2014" />
     </a>
     <figcaption itemprop="caption description">Égypte</figcaption>
     <h3>Coraya baie nov 2014</h3>
 </figure>
-<figure class=img>
-    <a href="./galeries/bonaire-avril-2016.html" class=gallery>
-        <img src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-944.jpg" alt="$Bonaire avril 2016">
+<figure class="img">
+    <a href="./galeries/bonaire-avril-2016.html" class="gallery">
+        <img src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-944.jpg" alt="$Bonaire avril 2016" />
     </a>
     <figcaption itemprop="caption description">Bonaire</figcaption>
     <h3>Bonaire avril 2016</h3>
 </figure>
-<figure class=img>
-    <a href="./galeries/juvenile.html" class=gallery>
-        <img src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-82.jpg" alt="$Juvenile">
+<figure class="img">
+    <a href="./galeries/juvenile.html" class="gallery">
+        <img src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-82.jpg" alt="$Juvenile" />
     </a>
     <figcaption itemprop="caption description">Juvenile</figcaption>
     <h3>Juvenile</h3>
 </figure>
-<figure class=img>
-    <a href="./galeries/nuit.html" class=gallery>
-        <img src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-698.jpg" alt="$Nuit">
+<figure class="img">
+    <a href="./galeries/nuit.html" class="gallery">
+        <img src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-698.jpg" alt="$Nuit" />
     </a>
     <figcaption itemprop="caption description">Nuit</figcaption>
     <h3>Nuit</h3>
 </figure>
-<figure class=img>
-    <a href="./galeries/rascasse.html" class=gallery>
-        <img src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-358.jpg" alt="$Rascasse">
+<figure class="img">
+    <a href="./galeries/rascasse.html" class="gallery">
+        <img src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-358.jpg" alt="$Rascasse" />
     </a>
     <figcaption itemprop="caption description">Rascasse</figcaption>
     <h3>Rascasse</h3>
 </figure>
-<figure class=img>
-    <a href="./galeries/lanzarote.html" class=gallery>
-        <img src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-24.jpg" alt="$Lanzarote">
+<figure class="img">
+    <a href="./galeries/lanzarote.html" class="gallery">
+        <img src="https://olivier-colli.github.io/olifish-photos/thumb/thumb-24.jpg" alt="$Lanzarote" />
     </a>
     <figcaption itemprop="caption description">Les îles Canaries</figcaption>
     <h3>Lanzarote</h3>
