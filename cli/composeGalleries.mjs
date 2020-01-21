@@ -36,7 +36,7 @@ readIndexFiles.then(promisesResult => {
     const file = keysValueArraysToMap(promisesResult)
     file.get('configGalleries').map(galleryMeta => {
         const photosMetas = db.findAll(file.get('db'), galleryMeta.title)
-        const gallery = composeGallery(galleryMeta, photosMetas, file)
+        const gallery = composeGallery(photosMetas, file)
         const body = nano(file.get('body'), { gallery: gallery })
         const js = nano(file.get('js'), { galleriesDir: path_.galleriesDir })
         const galleryContent = `
@@ -53,13 +53,31 @@ readIndexFiles.then(promisesResult => {
     })
 })
 
-function composeGallery(galleryMetas, photosMetas, file) {
+function fishnametoAnchor(fishname) {
+    try {
+        return fishname
+            .split(' ')
+            .map(
+                name =>
+                    `<a href="/${path_.galleriesDir}/#${slugify(
+                        name
+                    )}">${name}</a>`
+            )
+            .join(' ')
+    } catch (err) {
+        return '-'
+    }
+}
+
+function composeGallery(photosMetas, file) {
     let htmlGallery = '<div class=fish>'
     let counter = 0
     for (const meta of photosMetas) {
         let metas = {
             fishname: meta.nameFr,
             fishnameLatin: meta.nameLat,
+            fishnameUrl: fishnametoAnchor(meta.nameFr),
+            fishnameLatinUrl: fishnametoAnchor(meta.nameLat),
             imgUrl: `${path_.photosRepoUrl}/${meta.filepath.img}`,
             Id: counter++,
             thumbUrl: `${path_.photosRepoUrl}/${meta.filepath.thumb}`,
