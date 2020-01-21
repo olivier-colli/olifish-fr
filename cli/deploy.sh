@@ -13,6 +13,7 @@ git checkout --orphan gh-pages
 # compose index and galleries page
 npm run compose-index
 npm run compose-galleries
+# npm run compose-galleries-search
 
 git add --force index.html $galleries
 git commit -m "add galleries and index"

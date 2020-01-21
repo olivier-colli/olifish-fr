@@ -15,6 +15,8 @@ export default {
     tplCss: path.join(tplDir, 'tpl-style.css'),
     tplIndexCss: path.join(tplDir, 'tpl-index.css'),
     tplJS: path.join(tplDir, 'tpl-script.js'),
+    tplSearchJS: path.join(tplDir, 'tpl-script-search.js'),
+    tplSearch: path.join(tplDir, 'tpl-search.html'),
     tplPhotoswipe: path.join(tplDir, 'tpl-photoswipe.html'),
     tplHeader: path.join(tplDir, 'tpl-header.html'),
     tplIndex: path.join(tplDir, 'tpl-index.html'),

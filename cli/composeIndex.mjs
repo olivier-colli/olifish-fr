@@ -59,6 +59,7 @@ readIndexFiles.then(promisesResult => {
 const writeHome = content =>
     fs.writeFile('index.html', content, 'utf8', err => {
         if (err) throw err
+        console.info('write /index.html')
     })
 
 const composeGalleries = (config, tpl) =>
