@@ -2,7 +2,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     padding: 0;
     margin: 0;
-    background:  #f7f8fa;
+    background: #f7f8fa;
     width: 100%;
 }
 a:link,
@@ -19,21 +19,22 @@ header {
     justify-content: space-around;
 }
 header h1 {
-    line-height: .2em;
+    line-height: 0.2em;
     color: #ddd;
 }
-header a.contact {
+header .contact,
+header .lang {
     font-size: 1.2em;
     line-height: 2.5em;
 }
 header input {
-    margin: .5em;
+    margin: 0.5em;
     border-radius: 25px;
     background: #ddd;
     text-indent: 1em;
     height: 2em;
     width: 20em;
-    font-size: .8em;
+    font-size: 0.8em;
 }
 
 section,
@@ -57,8 +58,7 @@ section.gallery h2 {
 img,
 figure.home,
 header input,
-header
-{
+header {
     box-shadow: 0px 0px 3px 0px rgba(119, 119, 119, 0.73);
     -webkit-box-shadow: 0px 0px 3px 0px rgba(119, 119, 119, 0.73);
 }
