@@ -1,0 +1,84 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
+    background: #f7f8fa;
+    width: 100%;
+}
+a:link,
+a:visited {
+    text-decoration: none;
+    color: #9fa6b5;
+}
+header {
+    position: fixed;
+    width: 100%;
+    background: #2e4e72;
+    height: 3em;
+    display: flex;
+    justify-content: space-around;
+}
+header h1 {
+    line-height: 0.2em;
+    color: #ddd;
+}
+header .contact,
+header .lang {
+    font-size: 1.2em;
+    line-height: 2.5em;
+}
+header input {
+    margin: 0.5em;
+    border-radius: 25px;
+    background: #ddd;
+    text-indent: 1em;
+    height: 2em;
+    width: 20em;
+    font-size: 0.8em;
+}
+
+section,
+div.fish {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0;
+}
+div.fish {
+    padding-top: 3em;
+}
+section.gallery {
+    padding: 5em;
+    padding-top: 1em;
+}
+section.gallery h2 {
+    width: 100%;
+    color: #333;
+}
+img,
+figure.home,
+header input,
+header {
+    box-shadow: 0px 0px 3px 0px rgba(119, 119, 119, 0.73);
+    -webkit-box-shadow: 0px 0px 3px 0px rgba(119, 119, 119, 0.73);
+}
+.img p {
+    margin: 0;
+    text-align: center;
+}
+figure {
+    margin: 1em;
+    font-size: 1em;
+    text-align: center;
+}
+figure figcaption,
+figure figcaption a:link,
+figure figcaption a:visited {
+    color: #aaa;
+    font-style: italic;
+}
+figure h3 {
+    font-weight: lighter;
+    color: #71767a;
+    margin: 0 1em;
+}
